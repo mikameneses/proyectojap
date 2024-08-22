@@ -230,15 +230,4 @@ a.custom-card:hover {
     font-weight: bold;
 }
 
-.login {
-  height: 150px;
-  position: absolute;
-  left: 0;
-  bottom: 20px;
-}
 
-.container {
-  position: absolute;
-  bottom: 0;
-  right: left;
-}
