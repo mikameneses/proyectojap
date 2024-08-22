@@ -239,4 +239,5 @@ a.custom-card:hover {
 .container {
   position: absolute;
   bottom: 0;
+  right: left;
 }
