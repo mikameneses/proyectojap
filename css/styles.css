@@ -234,6 +234,10 @@ a.custom-card:hover {
   height: 150px;
   position: absolute;
   left: 0;
-  bottom: 150px;
+  bottom: 20px;
 }
 
+#containerLogin {
+  position: absolute;
+  bottom: 0px;
+}
