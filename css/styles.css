@@ -243,7 +243,7 @@ a.custom-card:hover {
 }
 
 #conjuntoLogin {
-  position: absolute;
-  top: 200px;
-  left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
