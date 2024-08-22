@@ -189,22 +189,32 @@ a.custom-card:hover {
   color: orange;
 }
 
-#conjuntoLogin {
+.conjuntoLogin {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     max-width: 330px;
     margin: 50px auto;
+    background: yellow;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#conjuntoLogin h1 {
+.conjuntoLoginHijo {
+  background: red;
+  width: 120px;
+}
+
+.conjuntoLogin h1 {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
 }
 
-#conjuntoLogin .form-control {
+.conjuntoLogin .form-control {
     background-color: #f8f9fa;
     border: none;
     border-radius: 5px;
@@ -212,18 +222,18 @@ a.custom-card:hover {
     margin-bottom: 15px;
 }
 
-#conjuntoLogin .btn {
+.conjuntoLogin .btn {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
 }
 
-#conjuntoLogin .btn-primary {
+.conjuntoLogin .btn-primary {
     background-color: #007bff;
     border: none;
 }
 
-#conjuntoLogin .btn-primary:after {
+.conjuntoLogin .btn-primary:after {
     content: '→';
     position: absolute;
     right: 15px;
