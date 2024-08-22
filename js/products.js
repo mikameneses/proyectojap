@@ -1,4 +1,4 @@
-const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 let getJSONData = function(url){
     let result = {};
@@ -27,8 +27,8 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(){
     getJSONData(url).then(function(resultado){
-        if(resultado.status === 'ok'){
-            console.log(resultado.data);
+        if(result.status === 'ok'){
+            console.log(result.data);
         }
     })
 })
