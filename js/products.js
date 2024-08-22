@@ -31,4 +31,4 @@ let fetchJSONData = function(url){
                }
            });
        });
-   })();
+ 
