@@ -230,6 +230,6 @@ a.custom-card:hover {
     font-weight: bold;
 }
 
-.login {
+#login {
   height = 150px;
 }
