@@ -1,6 +1,5 @@
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
-       document.addEventListener("DOMContentLoaded", function(){
-                    getJSONData(URL).then(data => {
+            getJSONData(URL).then(data => {
                 if (data.status === 'ok') {
                     const products = data.data.products;
                     const container = document.getElementById('products-container');
@@ -19,4 +18,7 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
                     document.getElementById('products-container').innerText = 'Error fetching data';
                 }
             });
+        }
+   
 
+  
