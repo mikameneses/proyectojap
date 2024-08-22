@@ -198,5 +198,9 @@ a.custom-card:hover {
 }
 
 #conjuntoLogin {
-  text-align: center;
+  background: white;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
