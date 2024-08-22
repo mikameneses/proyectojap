@@ -1,4 +1,4 @@
-const Autos_101 = https://japceibal.github.io/emercado-api/cats_products/101.json
+const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -35,7 +35,7 @@ let getJSONData = function(url){
 
 document.addEventListener("DOMContentLoaded", function(){
     getJSONData(CATEGORIES_URL).then(function(resultado){
-        if(resultado.status = 'ok'){
+        if(resultado.status === 'ok'){
             console.log(resultado.data);
         }
     })
