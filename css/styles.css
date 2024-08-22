@@ -235,3 +235,8 @@ a.custom-card:hover {
   position: absolute;
   left: 0;
 }
+
+.container {
+  position: absolite;
+  bottom: 0;
+}
