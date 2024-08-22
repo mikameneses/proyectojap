@@ -221,8 +221,6 @@ a.custom-card:hover {
 #conjuntoLogin .btn-primary {
     background-color: #007bff;
     border: none;
-    position: absolute;
-    top: 100px;
 }
 
 #conjuntoLogin .btn-primary:after {
@@ -244,4 +242,7 @@ a.custom-card:hover {
   bottom: 0px;
 }
 
-
+#conjuntoLogin {
+  position: absolute;
+  top: 100px;
+}
