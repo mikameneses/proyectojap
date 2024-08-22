@@ -244,5 +244,6 @@ a.custom-card:hover {
 
 #conjuntoLogin {
   position: absolute;
-  top: 500px;
+  top: 200px;
+  left: 200px;
 }
