@@ -18,7 +18,7 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
                     document.getElementById('products-container').innerText = 'Error fetching data';
                 }
             });
-        }
+        
    
 
   
