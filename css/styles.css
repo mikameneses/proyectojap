@@ -188,19 +188,3 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-
-.login {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 300px; 
-  margin: 10px; 
-}
-
-#conjuntoLogin {
-  background: white;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
