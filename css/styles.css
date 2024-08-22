@@ -233,7 +233,7 @@ a.custom-card:hover {
 .login {
   height: 150px;
   position: absolute;
-  left: 0;
+  left: 20px;
   bottom: 20px;
 }
 
