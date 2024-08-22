@@ -188,3 +188,63 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form.signin {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+form.signin label {
+    display: none;
+}
+
+form.signin input[type="text"],
+form.signin input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form.signin input[type="text"]::placeholder,
+form.signin input[type="password"]::placeholder {
+    color: #ccc;
+}
+
+form.signin button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #009fe3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form.signin button[type="submit"]:hover {
+    background-color: #0089c4;
+}
