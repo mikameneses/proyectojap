@@ -26,7 +26,7 @@ let getJSONData = function(url){
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    getJSONData(url).then(function(resultado){
+    getJSONData(url).then(function(result){
         if(result.status === 'ok'){
             console.log(result.data);
         }
