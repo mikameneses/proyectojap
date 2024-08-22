@@ -234,6 +234,7 @@ a.custom-card:hover {
   height: 150px;
   position: absolute;
   left: 0;
+  botomm: 0;
 }
 
 .container {
