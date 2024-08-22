@@ -1,4 +1,5 @@
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
+window.onload=function() {
             getJSONData(URL).then(data => {
                 if (data.status === 'ok') {
                     const products = data.data.products;
@@ -19,6 +20,6 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
                 }
             });
         
-   
+   }
 
   
