@@ -1,6 +1,6 @@
 body { text-align: center;
       background-image: url("FONDO.jpg");
-      background-size: contain;
+      background-size: cover;
     }
 
 .jumbotron,
