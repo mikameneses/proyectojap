@@ -1,6 +1,6 @@
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
 window.onload=function() {
-            getJSONData(URL).then(data => {
+            getJSONData(url).then(data => {
                 if (data.status === 'ok') {
                     const products = data.data.products;
                     const container = document.getElementById('products-container');
