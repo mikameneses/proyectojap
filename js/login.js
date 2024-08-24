@@ -1,4 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.getElementById("loginForm").addEventListener("submit", function(evt){
+        get username = document.getElementById("username").value;
+        get password = document.getElementById("password").value;
+        if(username === "" || password === ""){
+            evt.preventDefault();
+            alert("Por favor, complete todos los campos.");
+        }
+    });
+
+
+/*document.addEventListener('DOMContentLoaded', function() {
     const loginButton = document.getElementById('loginButton');
 
     loginButton.onclick = function() {
@@ -18,12 +28,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-    document.getElementById("loginForm").addEventListener("submit", function(evt){
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        if(username === "" || password === ""){
-            evt.preventDefault();
-            alert("Por favor, complete todos los campos.");
-        }
-    });
-
+    
