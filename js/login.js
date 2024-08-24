@@ -3,12 +3,18 @@
         var password = document.getElementById("password").value;
         if (username === "" || password === "") {
             alert("Por favor, complete todos los campos.");
-        } else {
-            window.location.href = "index.html";
-        }
-    }
+        }  } 
+           
 
-
+document.addEventListener('DOMContentLoaded', function() {
+   
+    const loginButton = document.getElementById('loginButton');
+   function validateLogin();
+    loginButton.onclick = function() {
+      
+        window.location.href = 'index.html';
+    };
+});
 
 
 
