@@ -1,40 +1,29 @@
-//const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"; 
-//window.onload=function() {
- //           getJSONData(url).then(data => {
-  //              if (data.status === 'ok') {
-  //                  const products = data.data.products;
-    //                const container = document.getElementById('products-container');
-      //              products.forEach(product => {
-      //                  const productDiv = document.createElement('div');
-      //                  productDiv.innerHTML = `
-      //                      <h2>${product.name}</h2>
-      //                      <p>${product.description}</p>
-      //                      <p>Price: ${product.currency} ${product.cost}</p>
-      //                      <p>Sold: ${product.soldCount}</p>
-      //                      <img src="${product.image}" alt="${product.name}" width="100">
-      //                  `;
-      //                  container.appendChild(productDiv);
-      //              });
-      //          } else {
-      //              document.getElementById('products-container').innerText = 'Error fetching data';
-      //          }
-      //      });
-        
-  // }
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
+// Función que se ejecuta una vez que toda la página ha sido cargada.
 window.onload = function() {
+
+    // Llamada a la función
     getJSONData(url).then(data => {
+
+        // Verificamos si el estatus de la respuesta es 'ok' para asegurar que los datos fueron obtenidos correctamente.
         if (data.status === 'ok') {
+            // Obtenemos los productos
             const products = data.data.products;
+
+            // Obtenemos el contenedor en el DOM donde se mostrarán los productos.
             const container = document.getElementById('products-container');
 
+            // Iteramos sobre cada producto en la lista de productos.
             products.forEach(product => {
-                
-                const productDiv = document.createElement('div');
-                productDiv.className = 'col-md-4'; // Agregar la clase de Bootstrap para el tamaño de la columna
 
-               
+                // Creamos un nuevo elemento div para cada producto.
+                const productDiv = document.createElement('div');
+                // Asignamos clases Bootstrap para el diseño
+                productDiv.className = 'col-md-4'; 
+
+                // Establecemos el contenido HTML del div del producto.
+                // Usamos una tarjeta card de Bootstrap 
                 productDiv.innerHTML = `
                     <div class="card mb-4 shadow-sm custom-card cursor-active" id="${product.id}">
                         <img class="bd-placeholder-img card-img-top" src="${product.image}" alt="${product.name}" style="width: 100%;">
@@ -47,13 +36,12 @@ window.onload = function() {
                     </div>
                 `;
 
-               
+                // Añadimos el div de producto creado al contenedor principal en el DOM.
                 container.appendChild(productDiv);
             });
         } else {
+            // Si hay un error al obtener los datos, muestra un mensaje de error.
             document.getElementById('products-container').innerText = 'Error fetching data';
         }
     });
 }
-
-  
