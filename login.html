@@ -69,6 +69,16 @@ function myFunction() {
     </div>
   </footer>
   <script src="js/login.js"></script>
+  <button id="logoutButton">Cerrar Sesión</button>
+<script>
+    document.getElementById('logoutButton').onclick = function() {
+        // Elimina el estado de sesión
+        localStorage.removeItem('loggedIn');
+
+        // Redirige al usuario al login
+        window.location.href = 'login.html';
+    };
+</script>
 </body>
 
 </html>
