@@ -39,25 +39,21 @@
     </div>
   </nav>
   <div id="conjuntoLogin">
-   <h1> Inicia sesión</h1>
-    <br>
-   <form class= signin action="#" method="GET">
-    
-        <input class=caja type="text" placeholder="Usuario" required>
-         <br>
-        <input class=caja type="password" placeholder="Contraseña" required>
-     <br>
-     <br>
-      <a <button id="loginButton" class="button-ingresar">Ingresar</button></a>
-     <script src="js/login.js"></script>
-      
-  </div>
+   <h1>Inicia sesión</h1>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="validateLogin()">Ingresar</button>
+    </form>
+    <script src="js/login.js"></script>
+</div>
 
-<script>
-function myFunction() {
-  location.replace("https://mikameneses.github.io/proyectojap/")
-}
-</script>
  </form>
   <img src="img/login.png" alt="e-commerce" class="login"> 
   <footer class="text-muted"> 
@@ -68,9 +64,7 @@ function myFunction() {
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-  <script src="js/login.js"></script>
-  <button id="logoutButton">Cerrar Sesión</button>
-<script>
+
 
 </body>
 
