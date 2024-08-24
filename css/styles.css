@@ -244,6 +244,21 @@ a.custom-card:hover {
  transform: translateX(-50%); /* Desplaza la imagen hacia la izquierda la mitad de su ancho para centrarla */
 
 }
+.button-ingresar {
+    background-color: #0078d4; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+.button-ingresar:hover {
+    background-color: #005a9e; 
+}
+
 
 #containerLogin {
   position: absolute;
