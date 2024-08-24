@@ -4,11 +4,12 @@ document.getElementById("loginForm").addEventListener("submit", function(evt){
         if(username === "" || password === ""){
             evt.preventDefault();
             alert("Por favor, complete todos los campos.");
+                else   window.location.href = 'index.html';
         }
     });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const loginButton = document.getElementById('loginButton');
 
     loginButton.onclick = function() {
