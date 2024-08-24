@@ -8,7 +8,7 @@ document.getElementById("loginForm").addEventListener("submit", function(evt){
     });
 
 
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const loginButton = document.getElementById('loginButton');
 
     loginButton.onclick = function() {
