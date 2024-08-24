@@ -1,16 +1,13 @@
-document.getElementById("loginForm").addEventListener("submit", function(){
-        get username = document.getElementById("username").value;
-        get password = document.getElementById("password").value;
-        if(username === "" || password === ""){
+ function validateLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username === "" || password === "") {
             alert("Por favor, complete todos los campos.");
-               } else {
+        } else {
+            window.location.href = "index.html";
+        }
+    }
 
-    // Añade un evento al botón para que al hacer clic redirija
-    loginButton.onclick = function() {
-        // Cambia la ubicación actual a 'index.html'
-        window.location.href = 'index.html';
-    };
-});
 
         
 
