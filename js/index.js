@@ -11,4 +11,13 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+    document.addEventListener('DOMContentLoaded', function() {
+    // Verifica si el usuario está autenticado
+    const loggedIn = localStorage.getItem('loggedIn');
+
+    if (!loggedIn) {
+        // Redirige al usuario al login si no ha iniciado sesión
+        window.location.href = 'login.html';
+    }
+   });
 });
