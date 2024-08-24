@@ -41,23 +41,19 @@
   <div id="conjuntoLogin">
    <h1> Inicia sesión</h1>
     <br>
-   <form id="loginForm" class= signin action="#" method="GET">
+   <form id="loginForm" class= "signin" action="#" method="GET">
     
         <input id="username"  class=caja type="text" placeholder="Usuario" required>
          <br>
         <input id="password" class=caja type="password" placeholder="Contraseña" required>
      <br>
      <br>
-     <button type="submit" id="loginButton" class="button-ingresar">Ingresar</button> 
+     <button type="button" id="loginButton" class="button-ingresar"onclick="validateLogin()">Ingresar</button>
      <script src="js/login.js"></script>
-      
+
   </div>
 
-<script>
-function myFunction() {
-  location.replace("https://mikameneses.github.io/proyectojap/")
-}
-</script>
+
  </form>
   <img src="img/login.png" alt="e-commerce" class="login"> 
   <footer class="text-muted"> 
@@ -68,9 +64,7 @@ function myFunction() {
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-  <script src="js/login.js"></script>
-  <button id="logoutButton">Cerrar Sesión</button>
-<script>
+  
 
 </body>
 
