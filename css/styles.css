@@ -240,7 +240,7 @@ a.custom-card:hover {
   height: 150px;
   position: absolute;
   left: 50%;
-  bottom: 20px;
+  bottom: 50px;
  transform: translateX(-50%); /* Desplaza la imagen hacia la izquierda la mitad de su ancho para centrarla */
 
 }
