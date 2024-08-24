@@ -239,8 +239,10 @@ a.custom-card:hover {
 .login {
   height: 150px;
   position: absolute;
-  left: 20px;
+  left: 50%;
   bottom: 20px;
+ transform: translateX(-50%); /* Desplaza la imagen hacia la izquierda la mitad de su ancho para centrarla */
+
 }
 
 #containerLogin {
