@@ -4,9 +4,13 @@ document.getElementById("loginForm").addEventListener("submit", function(evt){
         if(username === "" || password === ""){
             evt.preventDefault();
             alert("Por favor, complete todos los campos.");
-                else   window.location.href = 'index.html';
+               } else {
+            // Redirige a index.html si todo está completo
+           
+            window.location.href = "index.html";
         }
     });
+
 
 
 /*document.addEventListener('DOMContentLoaded', function() {
