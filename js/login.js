@@ -2,7 +2,6 @@ document.getElementById("loginForm").addEventListener("submit", function(){
         get username = document.getElementById("username").value;
         get password = document.getElementById("password").value;
         if(username === "" || password === ""){
-            evt.preventDefault();
             alert("Por favor, complete todos los campos.");
                } else {
 
