@@ -32,7 +32,12 @@ nav a {
     font-size: 3.5rem;
   }
 }
-
+@media (max-width: 568px){
+      .imgsmall{
+            url('../img/login.png');
+              height:auto;
+      }
+}
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
