@@ -33,9 +33,8 @@ nav a {
   }
 }
 @media (max-width: 568px){
-      .imgsmall{
-            url('../img/login.png');
-              height:auto;
+    width:100%;
+    height:auto;
       }
 }
 .jumbotron {
