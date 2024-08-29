@@ -32,9 +32,10 @@ nav a {
     font-size: 3.5rem;
   }
 }
-@media (max-width: 568px){
-    width:100%;
-    height:auto;
+@media (min-width: 768px){
+    .imgsmall{
+      width:50%;
+   display: none;
       }
 }
 .jumbotron {
