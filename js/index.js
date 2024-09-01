@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", function(){
     // Verifica si el usuario está autenticado
     const loggedIn = localStorage.getItem('loggedIn');
 
-    if (!loggedIn) {
-        // Redirige al usuario al login si no ha iniciado sesión
+    if (!sessionStorage.getItem("loggedIn")) {
+        alert("Inicia sesión para acceder a esta página")
         window.location.href = 'login.html';
     }
    });
