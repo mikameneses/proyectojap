@@ -20,4 +20,11 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href = 'login.html';
     }
    });
+     window.onload = function() {
+        var username = localStorage.getItem("username");
+        if (username) {
+            document.getElementById("userDisplay").textContent = username;
+        }
+    };
+
 });
