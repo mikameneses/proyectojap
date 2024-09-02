@@ -44,4 +44,11 @@ window.onload = function() {
             document.getElementById('products-container').innerText = 'Error fetching data';
         }
     });
+      window.onload = function() {
+        var username = localStorage.getItem("username");
+        if (username) {
+            document.getElementById("userDisplay").textContent = username;
+        }
+    };
+
 }
