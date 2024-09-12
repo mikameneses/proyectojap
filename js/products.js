@@ -1,4 +1,5 @@
 const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+let products = []; // Variable global para almacenar los productos
 
 // Función que se ejecuta una vez que toda la página ha sido cargada.
 window.onload = function() {
