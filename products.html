@@ -39,6 +39,44 @@
   </nav>
 <main>
   <h1>Autos</h1>
+  
+  <!-- Controles de ordenamiento -->
+   <div class="container mb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary" id="sortPriceAsc">Ordenar por precio ascendente</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary" id="sortPriceDesc">Ordenar por precio descendente</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary" id="sortRelevanceDesc">Ordenar por relevancia</button>
+      </div>
+    </div>
+  </div>
+
+   <!-- Filtros y opciones de ordenamiento -->
+   <div class="container mb-3">
+    <form id="filter-form" class="row g-3">
+      <div class="col-md-4">
+        <label for="minPrice" class="form-label">Precio mínimo</label>
+        <input type="number" class="form-control" id="minPrice" placeholder="0">
+      </div>
+      <div class="col-md-4">
+        <label for="maxPrice" class="form-label">Precio máximo</label>
+        <input type="number" class="form-control" id="maxPrice" placeholder="100000">
+      </div>
+      <div class="col-md-4 align-self-end">
+        <button type="button" class="btn btn-primary" id="filterBtn">Filtrar</button>
+      </div>
+      <div class="col-3 p-0">
+        <div class="btn-group" role="group">
+          <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+        </div>
+    </form>
+  </div>
+
+  
   <div class="row" id='products-container'>
 </div>
 </main>
