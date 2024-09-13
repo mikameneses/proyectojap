@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productId) {
         // Dirección de la API
-        const apiUrl = `https://japceibal.github.io/emercado-api/cats_products/${productId}.json`;
+        const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
 
         // Realizar la solicitud a la API para obtener los datos del producto
         fetch(apiUrl)
