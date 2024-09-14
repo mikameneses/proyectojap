@@ -1,7 +1,7 @@
 window.onload = function() {
     // Recupera el catID del almacenamiento local
     const categoriaId = localStorage.getItem("catID"); 
-    const url = ⁠ https://japceibal.github.io/emercado-api/products/${categoriaId}.json ⁠; // Forma URL con catID
+    const url =  'https://japceibal.github.io/emercado-api/products/${categoriaId}.json' ⁠;
 
     let products = []; // Variable global para almacenar los productos
 
