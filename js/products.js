@@ -1,29 +1,22 @@
 window.onload = function() {
-    const categoriaId = setCatID(id) ; // Recupera catID del almacenamiento local
-    const url = `https://japceibal.github.io/emercado-api/products/${categoriaId}.json`; // Forma URL con catID
+    // Recupera el catID del almacenamiento local
+    const categoriaId = localStorage.getItem("catID"); 
+    const url = ⁠ https://japceibal.github.io/emercado-api/products/${categoriaId}.json ⁠; // Forma URL con catID
 
-let products = []; // Variable global para almacenar los productos
-
-// Función que se ejecuta una vez que toda la página ha sido cargada.
-window.onload = function() {
+    let products = []; // Variable global para almacenar los productos
 
     // Llamada a la función para obtener los datos del JSON
     getJSONData(url).then(data => {
-        // Verificamos si el estatus de la respuesta es 'ok'
         if (data.status === 'ok') {
-            // Obtenemos los productos desde el JSON
             products = data.data.products;
-
-            // Renderizamos los productos inicialmente
             renderProducts(products);
         } else {
-            // Si hay un error al obtener los datos, muestra un mensaje de error.
             document.getElementById('products-container').innerText = 'Error fetching data';
         }
     });
 
-    // Muestra el nombre de usuario almacenado en localStorage
-    var username = localStorage.getItem("username");
+    // Mostrar el nombre de usuario almacenado en localStorage
+    const username = localStorage.getItem("username");
     if (username) {
         document.getElementById("userDisplay").textContent = username;
     }
@@ -37,14 +30,11 @@ window.onload = function() {
     });
 
     // Limpiar filtros
-document.getElementById("clearRangeFilter").addEventListener("click", function() {
-    // Limpiar los valores de los campos de rango de precios
-    document.getElementById("rangeFilterCountMin").value = '';
-    document.getElementById("rangeFilterCountMax").value = '';
-    
-    // Mostrar todos los productos nuevamente
-    renderProducts(products);
-});
+    document.getElementById("clearRangeFilter").addEventListener("click", function() {
+        document.getElementById("minPrice").value = '';
+        document.getElementById("maxPrice").value = '';
+        renderProducts(products);
+    });
 
     // Orden ascendente por precio
     document.getElementById("sortPriceAsc").addEventListener("click", function() {
@@ -68,17 +58,12 @@ document.getElementById("clearRangeFilter").addEventListener("click", function()
 // Función para renderizar productos
 function renderProducts(productsList) {
     const container = document.getElementById('products-container');
-    container.innerHTML = ''; // Limpiamos el contenedor antes de renderizar
+    container.innerHTML = '';
 
-    // Iteramos sobre cada producto en la lista de productos.
     productsList.forEach(product => {
-        // Creamos un nuevo elemento div para cada producto.
         const productDiv = document.createElement('div');
-        // Asignamos clases Bootstrap para el diseño
         productDiv.className = 'col-md-4'; 
 
-        // Establecemos el contenido HTML del div del producto.
-        // Usamos una tarjeta card de Bootstrap 
         productDiv.innerHTML = `
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="${product.id}">
                 <img class="bd-placeholder-img card-img-top" src="${product.image}" alt="${product.name}" style="width: 100%;">
