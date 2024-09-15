@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto guardado en localStorage
-    const productId = localStorage.getItem('product-id');
+    const productId = localStorage.getItem('id');
 
     if (productId) {
         // Dirección de la API
@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Realizar la solicitud a la API para obtener los datos del producto
         fetch(apiUrl)
             .then(response => response.json())
-            .then(data => {
+            .then(producto => {
                 // Aquí accedemos al producto que está dentro de la propiedad "products" del JSON
-                const producto = data.products[0]; // Asumiendo que solo hay un producto, seleccionamos el primero
 
                 // Actualizar los detalles del producto en la página
                 document.getElementById('product-name').textContent = producto.name;
@@ -46,7 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Producto no encontrado en localStorage');
     }
 });
-function seleccionarProducto(id) {
-    localStorage.setItem('product-id', id);
-    window.location.href = 'product-info.html';
-}
