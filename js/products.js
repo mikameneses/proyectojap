@@ -4,7 +4,7 @@ window.onload = function() {
     const categoriaName = localStorage.getItem("catName");
 
       if (categoriaName) {
-        document.querySelector("h1").textContent = categoriaName;
+        document.querySelector("h1").textContent = catName;
     }
 
     // Comprueba que tienes un catID válido
