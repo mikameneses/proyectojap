@@ -1,6 +1,11 @@
 window.onload = function() {
-    // Recupera el catID del almacenamiento local
+    // Recupera el catID y catName del almacenamiento local
     const categoriaId = localStorage.getItem("catID"); 
+    const categoriaName = localStorage.getItem("catName");
+
+      if (categoriaName) {
+        document.querySelector("h1").textContent = categoriaName;
+    }
 
     // Comprueba que tienes un catID válido
     if (categoriaId) {
