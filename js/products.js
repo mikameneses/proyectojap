@@ -80,8 +80,15 @@ function renderProducts(productsList) {
                 </div>
             </div>
         `;
+          // Añadir un event listener para que al hacer clic en el producto se llame a seleccionarProducto
+          productDiv.addEventListener('click', () => seleccionarProducto(product.id));
 
         // Añadimos el div de producto creado al contenedor principal en el DOM.
         container.appendChild(productDiv);
     });
+}
+    // Función para seleccionar el producto
+function seleccionarProducto(id) {
+    localStorage.setItem('id', id); // Guarda el ID del producto en localStorage
+    window.location.href = 'product-info.html'; // Redirige a la página de detalles del producto
 }
