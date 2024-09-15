@@ -63,6 +63,7 @@ window.onload = function() {
         let sortedProducts = [...products].sort((a, b) => b.soldCount - a.soldCount);
         renderProducts(sortedProducts);
     });
+}
 };
 
 // Función para renderizar productos
