@@ -280,6 +280,9 @@ a.custom-card:hover {
     height: auto; 
     display: block; 
     margin-bottom: 10px; 
+    max-width: 80px; /* Ajusta este valor al tamaño deseado para tus miniaturas */
+}
+
 
 
 
