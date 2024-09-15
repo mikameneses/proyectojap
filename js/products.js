@@ -98,3 +98,62 @@ function seleccionarProducto(id) {
     localStorage.setItem('id', id); // Guarda el ID del producto en localStorage
     window.location.href = 'product-info.html'; // Redirige a la página de detalles del producto
 }
+// Obtener los elementos relevantes
+const searchBar = document.getElementById('search-bar');
+const productContainer = document.getElementById('product-list'); // Asegúrate de tener un contenedor para los productos
+
+// Simulando algunos productos (deberías tener algo similar desde tu base de datos o JSON)
+let products = [
+  {
+    id: 1,
+    title: 'Laptop Dell',
+    description: 'Laptop de alta gama ideal para el trabajo y juegos',
+  },
+  {
+    id: 2,
+    title: 'Smartphone Samsung',
+    description: 'Un teléfono inteligente con excelente cámara y pantalla AMOLED',
+  },
+  {
+    id: 3,
+    title: 'Televisor LG',
+    description: 'Televisor 4K con colores brillantes y conectividad a internet',
+  },
+  // Agrega más productos aquí
+];
+
+// Función para mostrar los productos en la página
+function displayProducts(filteredProducts) {
+  productContainer.innerHTML = ''; // Limpia el contenedor
+
+  // Crear los elementos HTML para cada producto
+  filteredProducts.forEach((product) => {
+    const productCard = `
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">${product.title}</h5>
+          <p class="card-text">${product.description}</p>
+        </div>
+      </div>`;
+    productContainer.innerHTML += productCard;
+  });
+}
+
+// Inicialmente muestra todos los productos
+displayProducts(products);
+
+// Evento de búsqueda en tiempo real
+searchBar.addEventListener('input', function (event) {
+  const searchText = event.target.value.toLowerCase();
+
+  // Filtra los productos en función del título o descripción
+  const filteredProducts = products.filter((product) => {
+    return (
+      product.title.toLowerCase().includes(searchText) ||
+      product.description.toLowerCase().includes(searchText)
+    );
+  });
+
+  // Muestra los productos filtrados
+  displayProducts(filteredProducts);
+});
