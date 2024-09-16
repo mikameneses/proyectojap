@@ -98,3 +98,23 @@ function seleccionarProducto(id) {
     localStorage.setItem('id', id); // Guarda el ID del producto en localStorage
     window.location.href = 'product-info.html'; // Redirige a la página de detalles del producto
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search');
+    const productsContainer = document.getElementById('products-container');
+    
+    searchInput.addEventListener('input', function() {
+        const searchQuery = this.value.toLowerCase();
+        const productItems = productsContainer.getElementsByClassName('product-item');
+
+        for (let product of productItems) {
+            const title = product.dataset.title.toLowerCase();
+            const description = product.dataset.description.toLowerCase();
+
+            if (title.includes(searchQuery) || description.includes(searchQuery)) {
+                product.style.display = ''; // Mostrar producto
+            } else {
+                product.style.display = 'none'; // Ocultar producto
+            }
+        }
+    });
+});
