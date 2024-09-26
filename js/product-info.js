@@ -45,3 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Producto no encontrado en localStorage');
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el ID del producto guardado en localStorage
+    const productId = localStorage.getItem('id');
+
+    if (productId) {
+        // Dirección de la API
+        const apiUrl = `   https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+     
+
+        // Realizar la solicitud a la API para obtener los comentarios del producto
+        fetch(apiUrl)
+            .then(response => response.json())      
+            .then(comentario => {
+                // Aquí accedemos al producto que está dentro de la propiedad "products comments" del JSON
+
+                // Actualizar los detalles del comentario en la página
+                document.getElementById('product-name').textContent = producto.name;
+                document.getElementById('score').textContent = `Calificación: ${comentario.score}`;
+                document.getElementById('description').textContent = `Comentario: ${comentario.description}`;
+                document.getElementById('user').textContent = `Usuario: ${comentario.soldCount}`;
+                document.getElementById('dateTime').textContent = `Fecha: ${comentario.dateTime}`;
+
