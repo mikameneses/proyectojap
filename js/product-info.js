@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (productId) {
         // Dirección de la API
         const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
+        const commentsApiUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
 
         // Realizar la solicitud a la API para obtener los datos del producto
         fetch(apiUrl)
@@ -41,29 +42,31 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
+ // Solicitud para obtener los comentarios del producto
+        fetch(commentsApiUrl)
+            .then(response => response.json())
+            .then(comentarios => {
+                const commentsContainer = document.getElementById('comments-container');
+                commentsContainer.innerHTML = ''; // Limpiar los comentarios previos
+
+                comentarios.forEach(comentario => {
+                    const commentElement = document.createElement('div');
+                    commentElement.classList.add('comment');
+
+                    commentElement.innerHTML = `
+                        <p><strong>Usuario:</strong> ${comentario.user}</p>
+                        <p><strong>Calificación:</strong> ${comentario.score} estrellas</p>
+                        <p><strong>Comentario:</strong> ${comentario.description}</p>
+                        <p><strong>Fecha:</strong> ${comentario.dateTime}</p>
+                    `;
+
+                    commentsContainer.appendChild(commentElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener los comentarios:', error);
+            });
     } else {
         console.error('Producto no encontrado en localStorage');
     }
 });
-document.addEventListener('DOMContentLoaded', () => {
-    // Obtener el ID del producto guardado en localStorage
-    const productId = localStorage.getItem('id');
-
-    if (productId) {
-        // Dirección de la API
-        const apiUrl = `   https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
-     
-
-        // Realizar la solicitud a la API para obtener los comentarios del producto
-        fetch(apiUrl)
-            .then(response => response.json())      
-            .then(comentario => {
-                // Aquí accedemos al producto que está dentro de la propiedad "products comments" del JSON
-
-                // Actualizar los detalles del comentario en la página
-                document.getElementById('product-name').textContent = producto.name;
-                document.getElementById('score').textContent = `Calificación: ${comentario.score}`;
-                document.getElementById('description').textContent = `Comentario: ${comentario.description}`;
-                document.getElementById('user').textContent = `Usuario: ${comentario.soldCount}`;
-                document.getElementById('dateTime').textContent = `Fecha: ${comentario.dateTime}`;
-
