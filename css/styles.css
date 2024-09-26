@@ -284,18 +284,20 @@ a.custom-card:hover {
 }
 
 #comments-container {
-    margin-top: 20px;
-    padding: 10px;
+    margin-top: 10px; /* Reduce el espacio superior */
+    padding: 10px; /* Espaciado interno */
     background-color: #f8f9fa; 
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limitar el ancho máximo */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
 }
 
-/* Estilo de cada comentario */
 .comment {
     border-bottom: 1px solid #ddd; /* Línea divisoria entre comentarios */
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 10px; /* Reduce el padding */
+    margin-bottom: 5px; /* Reduce el espacio entre comentarios */
     background-color: #ffffff; /* Fondo blanco */
     border-radius: 5px;
 }
@@ -317,10 +319,5 @@ a.custom-card:hover {
     color: #6c757d; /* Color gris para la fecha */
     font-size: 0.9em;
     text-align: right;
-}
-
-
-.comment p {
-    margin: 5px 0;
 }
 
