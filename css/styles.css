@@ -321,3 +321,54 @@ a.custom-card:hover {
     text-align: right;
 }
 
+
+.star {
+  color: #162e26;;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+.star:hover,
+.star.checked {
+  color: gold;
+}
+
+#comment-rating {
+  width: 100%; /* Ocupa todo el espacio disponible */
+  max-width: 500px; /* Ancho máximo de 500px */
+  padding: 60px; /* Aumenta el padding para hacerlo más grande */
+  font-size: 18px; /* Aumenta el tamaño del texto */
+}
+
+.rating {
+  margin: 20px;
+}
+
+#ratingForm {
+  width: 100%;
+}
+
+.rating-content {
+  display: flex;
+  justify-content: space-between; /* Espacio entre elementos a la izquierda y a la derecha */
+  align-items: center; /* Alineación vertical de los elementos */
+  padding-right: 400px;
+}
+
+.rating-group-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-control {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.ratingStar {
+  display: flex;
+  gap: 5px; /* Espacio entre las estrellas */
+}
+
