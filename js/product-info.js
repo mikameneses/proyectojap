@@ -42,6 +42,42 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
+
+        // Mostrar productos relacionados
+                mostrarProductosRelacionados(producto.relatedProducts);
+            })
+            .catch(error => console.error('Error al obtener los datos del producto:', error));
+    } else {
+        console.error('Producto no encontrado en localStorage');
+    }
+
+    // Función para mostrar productos relacionados
+    function mostrarProductosRelacionados(relatedProducts) {
+        const relatedContainer = document.getElementById('related-products-container');
+        relatedContainer.innerHTML = '';
+
+        relatedProducts.forEach(productoRelacionado => {
+            // Crear un contenedor para cada producto relacionado
+            const relatedProductElement = document.createElement('div');
+            relatedProductElement.classList.add('related-product');
+            relatedProductElement.style.margin = '10px';
+
+            // Estructura del producto relacionado
+            relatedProductElement.innerHTML = `
+                <img src="${productoRelacionado.image}" alt="${productoRelacionado.name}" class="img-fluid mb-2" style="width: 100px;">
+                <p>${productoRelacionado.name}</p>
+            `;
+
+            // Al hacer clic en un producto relacionado, se actualiza el localStorage y se recarga la página
+            relatedProductElement.addEventListener('click', () => {
+                localStorage.setItem('id', productoRelacionado.id);
+                window.location.reload();  // Recarga la página para mostrar el nuevo producto
+            });
+
+            relatedContainer.appendChild(relatedProductElement);
+        });
+    }
+});
  // Solicitud para obtener los comentarios del producto
         fetch(commentsApiUrl)
             .then(response => response.json())
