@@ -85,4 +85,42 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 });
+const products = {
+    1: {
+        name: "Producto 1",
+        image: "producto1.jpg",
+        description: "Descripción del Producto 1.",
+        price: "$100"
+    },
+    2: {
+        name: "Producto 2",
+        image: "producto2.jpg",
+        description: "Descripción del Producto 2.",
+        price: "$150"
+    },
+    3: {
+        name: "Producto 3",
+        image: "producto3.jpg",
+        description: "Descripción del Producto 3.",
+        price: "$120"
+    }
+};
+
+function updateProduct(productId) {
+    const product = products[productId];
+    if (product) {
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-image').src = product.image;
+        document.getElementById('product-description').textContent = product.description;
+        document.getElementById('product-price').textContent = product.price;
+    }
+}
+
+document.getElementById('related-products-list').addEventListener('click', function (e) {
+    if (e.target && e.target.nodeName === 'A') {
+        e.preventDefault(); // Prevenir redirección
+        const productId = e.target.getAttribute('data-product-id');
+        updateProduct(productId);
+    }
+});
 
