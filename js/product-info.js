@@ -120,7 +120,6 @@ document.getElementById('related-products-list').addEventListener('click', funct
     if (e.target && e.target.nodeName === 'A') {
         e.preventDefault(); // Prevenir redirección
         const productId = e.target.getAttribute('data-product-id');
-        console.log("id del producto seleccionado: " + productoId));
         updateProduct(productId);
     }
 });
