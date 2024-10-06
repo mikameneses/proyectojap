@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 // Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
-fetch('url_del_json_del_producto')
+fetch('https://japceibal.github.io/emercado-api/products/${productId}.json')
     .then(response => response.json())
     .then(data => {
         // Mostrar la información del producto principal aquí
