@@ -341,8 +341,8 @@ a.custom-card:hover {
 }
 
 .ratingStar .star {
-    color: yellow; /* Cambia el color de las estrellas a amarillo */
-    font-size: 24px; /* Ajusta el tamaño según tus preferencias */
+    color: yellow; /* Cambia el color de las estrellas */
+    font-size: 24px; /* Ajusta el tamaño */
 }
 
 .rating {
