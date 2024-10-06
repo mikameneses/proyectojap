@@ -54,6 +54,33 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
+        function showRelatedProducts(relatedProducts) {
+    let relatedProductsContainer = document.getElementById('related-products-container');
+    relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
+
+    relatedProducts.forEach(product => {
+        let productHTML = `
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                    </div>
+                </div>
+            </div>
+        `;
+        relatedProductsContainer.innerHTML += productHTML;
+    });
+}
+
+// Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
+fetch('url_del_json_del_producto')
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar la información del producto principal aquí
+        showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
+    })
+    .catch(error => console.error('Error:', error));
  // Solicitud para obtener los comentarios del producto
         fetch(commentsApiUrl)
             .then(response => response.json())
