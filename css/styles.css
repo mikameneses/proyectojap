@@ -340,6 +340,11 @@ a.custom-card:hover {
   font-size: 18px; /* Aumenta el tamaño del texto */
 }
 
+.ratingStar .star {
+    color: yellow; /* Cambia el color de las estrellas a amarillo */
+    font-size: 24px; /* Ajusta el tamaño según tus preferencias */
+}
+
 .rating {
   margin: 20px;
 }
