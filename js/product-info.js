@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('category').textContent = `Categoría: ${producto.category}`;
                 document.getElementById('description').textContent = `Descripción: ${producto.description}`;
                 document.getElementById('sold').textContent = `Vendidos: ${producto.soldCount}`;
+                document.getElementById('relatedProductsname').textContent = `Productos relacionados: ${producto.relatedProducts.name}`;
+                document.getElementById('relatedProductsimage').textContent = `Productos relacionados: ${producto.relatedProducts.image}`;
 
                 // Actualizar la imagen principal
                 const mainImage = document.querySelector('.main-image img');
@@ -89,21 +91,14 @@ const products = {
     1: {
         name: "Producto 1",
         image: "producto1.jpg",
-        description: "Descripción del Producto 1.",
-        price: "$100"
+      
     },
     2: {
         name: "Producto 2",
         image: "producto2.jpg",
-        description: "Descripción del Producto 2.",
-        price: "$150"
+   
     },
-    3: {
-        name: "Producto 3",
-        image: "producto3.jpg",
-        description: "Descripción del Producto 3.",
-        price: "$120"
-    }
+
 };
 
 function updateProduct(productId) {
