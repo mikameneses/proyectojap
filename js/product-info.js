@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('category').textContent = `Categoría: ${producto.category}`;
                 document.getElementById('description').textContent = `Descripción: ${producto.description}`;
                 document.getElementById('sold').textContent = `Vendidos: ${producto.soldCount}`;
-                document.getElementById('relatedProductsname').textContent = `Productos relacionados: ${producto.relatedProducts.name}`;
-                document.getElementById('relatedProductsimage').textContent = `Productos relacionados: ${producto.relatedProducts.image}`;
-
+               
                 // Actualizar la imagen principal
                 const mainImage = document.querySelector('.main-image img');
                 mainImage.src = producto.images[0]; // Primera imagen como imagen principal
@@ -100,22 +98,32 @@ const products = {
     },
 
 };
+function showRelatedProducts(relatedProducts) {
+    let relatedProductsContainer = document.getElementById('related-products-container');
+    relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
 
-function updateProduct(productId) {
-    const product = products[productId];
-    if (product) {
-        document.getElementById('product-name').textContent = product.name;
-        document.getElementById('product-image').src = product.image;
-        document.getElementById('product-description').textContent = product.description;
-        document.getElementById('product-price').textContent = product.price;
-    }
+    relatedProducts.forEach(product => {
+        let productHTML = `
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                    </div>
+                </div>
+            </div>
+        `;
+        relatedProductsContainer.innerHTML += productHTML;
+    });
 }
 
-document.getElementById('related-products-list').addEventListener('click', function (e) {
-    if (e.target && e.target.nodeName === 'A') {
-        e.preventDefault(); // Prevenir redirección
-        const productId = e.target.getAttribute('data-product-id');
-        updateProduct(productId);
-    }
-});
+// Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
+fetch('url_del_json_del_producto')
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar la información del producto principal aquí
+        showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
+    })
+    .catch(error => console.error('Error:', error));
+
 
