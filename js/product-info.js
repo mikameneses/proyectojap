@@ -1,3 +1,15 @@
+function renderStars(score) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= score) {
+            stars += '<i class="fas fa-star"></i>'; 
+        } else {
+            stars += '<i class="far fa-star"></i>';
+        }
+    }
+    return stars;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
@@ -52,10 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 comentarios.forEach(comentario => {
                     const commentElement = document.createElement('div');
                     commentElement.classList.add('comment');
-
+                    
+ const starsHtml = renderStars(comentario.score);
+                    
                     commentElement.innerHTML = `
                         <p><strong>Usuario:</strong> ${comentario.user}</p>
-                        <p><strong>Calificación:</strong> ${comentario.score} estrellas</p>
+                        <p><strong>Calificación:</strong> ${starsHtml} </p>
                         <p><strong>Comentario:</strong> ${comentario.description}</p>
                         <p><strong>Fecha:</strong> ${comentario.dateTime}</p>
                     `;
