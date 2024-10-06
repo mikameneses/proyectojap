@@ -91,17 +91,7 @@ fetch(apiUrl)
                 comentarios.forEach(comentario => {
                     const commentElement = document.createElement('div');
                     commentElement.classList.add('comment');
-                    // Manejo del envío del formulario de calificación
-  document.getElementById('ratingForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const commentInput = document.getElementById('comment-rating');
-    const commentText = commentInput.value;
-    const selectedStars = document.querySelectorAll('.star.checked').length;
-
-    if (commentText && selectedStars) {
-      const newComment = document.createElement('div');
-      newComment.classList.add('comment');
+                   
 
  const starsHtml = renderStars(comentario.score);
                     
