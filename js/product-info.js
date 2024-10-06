@@ -2,9 +2,9 @@ function renderStars(score) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
         if (i <= score) {
-            stars += '<i class="fas fa-star"></i>'; 
+         stars += '<i class="bi bi-star-fill"></i>'; // Estrella llena
         } else {
-            stars += '<i class="far fa-star"></i>';
+            stars += '<i class="bi bi-star"></i>'; // Estrella vacía
         }
     }
     return stars;
