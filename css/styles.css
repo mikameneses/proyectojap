@@ -325,7 +325,7 @@ a.custom-card:hover {
 .star {
   color: #162e26;;
   cursor: pointer;
-  font-size: 35px;
+  font-size: 24px;
 }
 
 .star:hover,
@@ -338,11 +338,6 @@ a.custom-card:hover {
   max-width: 500px; /* Ancho máximo de 500px */
   padding: 60px; /* Aumenta el padding para hacerlo más grande */
   font-size: 18px; /* Aumenta el tamaño del texto */
-}
-
-.ratingStar .star {
-    color: yellow; /* Cambia el color de las estrellas */
-    font-size: 24px; /* Ajusta el tamaño */
 }
 
 .rating {
