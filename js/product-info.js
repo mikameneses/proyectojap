@@ -1,4 +1,4 @@
-[6/10/24, 9:03:50 p. m.] Clovis: function renderStars(score) {
+function renderStars(score) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
         if (i <= score) {
