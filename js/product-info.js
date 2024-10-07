@@ -71,6 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         relatedProductsContainer.innerHTML += productHTML;
     });
+              // Agregar evento de clic para redirigir al producto relacionado
+    relatedProductsContainer.querySelectorAll('.card').forEach((card, index) => {
+        card.addEventListener('click', () => {
+            // Guardar el ID del producto relacionado en localStorage
+            localStorage.setItem('id', relatedProducts[index].id);
+            // Redirigir a la página del producto
+            window.location.href = 'product-info.html';
+        });
+    });
 }
 
 // Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
