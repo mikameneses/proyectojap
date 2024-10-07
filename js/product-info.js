@@ -132,10 +132,7 @@ fetch(apiUrl)
             for (let i=index+1; i<stars.length; i++) {
                 stars[i].classList.remove("checked");
             }
-    })
-})
-
-});   // Manejo del envío del formulario de calificación
+            });   // Manejo del envío del formulario de calificación
     document.getElementById('ratingForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Detener el envío del formulario
         
@@ -201,10 +198,11 @@ fetch(apiUrl)
         showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
     })
     .catch(error => console.error('Error:', error));
-   });
-    });
-}
+    })
+})
 
+
+  
 
 
 
