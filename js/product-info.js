@@ -135,5 +135,71 @@ fetch(apiUrl)
     })
 })
 
+});   // Manejo del envío del formulario de calificación
+    document.getElementById('ratingForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Detener el envío del formulario
+        
+        const commentInput = document.getElementById('comment-rating');
+        const commentText = commentInput.value;
+        const selectedStars = document.querySelectorAll('.star.checked').length;
+
+        if (commentText && selectedStars) {
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            
+            const starsHtml = renderStars(selectedStars);
+
+            newComment.innerHTML = `
+                <p><strong>Usuario:</strong> Anónimo</p>
+                <p><strong>Calificación:</strong> ${starsHtml}</p>
+                <p><strong>Comentario:</strong> ${commentText}</p>
+                <p><strong>Fecha:</strong> ${new Date().toLocaleString()}</p>
+            `;
+
+            document.getElementById('comments-container').appendChild(newComment);
+
+            commentInput.value = '';
+            stars.forEach(star => star.classList.remove('checked'));
+        }
+    });
 });
+
+function showRelatedProducts(relatedProducts) {
+    let relatedProductsContainer = document.getElementById('related-products-container');
+    relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
+
+    relatedProducts.forEach(product => {
+        let productHTML = `
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                    </div>
+                </div>
+            </div>
+        `;
+        relatedProductsContainer.innerHTML += productHTML;
+    });
+
+    // Agregar evento de clic para redirigir al producto relacionado
+    relatedProductsContainer.querySelectorAll('.card').forEach((card, index) => {
+        card.addEventListener('click', () => {
+            // Guardar el ID del producto relacionado en localStorage
+            localStorage.setItem('id', relatedProducts[index].id);
+            // Redirigir a la página del producto
+            window.location.href = 'product-info.html';
+        });
+    });
+}
+
+// Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        // Mostrar la información del producto principal aquí
+        showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
+    })
+    .catch(error => console.error('Error:', error));
+
 
