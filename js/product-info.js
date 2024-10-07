@@ -169,6 +169,10 @@ fetch(apiUrl)
         showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
     })
     .catch(error => console.error('Error:', error));
+   }
+  });
+});
+
 
 
 
