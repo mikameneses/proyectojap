@@ -1,4 +1,4 @@
-function renderStars(score) {
+[6/10/24, 9:03:50 p. m.] Clovis: function renderStars(score) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
         if (i <= score) {
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productId) {
         // Dirección de la API
-        const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-        const commentsApiUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+        const apiUrl = ⁠ https://japceibal.github.io/emercado-api/products/${productId}.json ⁠;
+        const commentsApiUrl = ⁠ https://japceibal.github.io/emercado-api/products_comments/${productId}.json ⁠;
 
         // Realizar la solicitud a la API para obtener los datos del producto
         fetch(apiUrl)
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Actualizar los detalles del producto en la página
                 document.getElementById('product-name').textContent = producto.name;
-                document.getElementById('category').textContent = `Categoría: ${producto.category}`;
-                document.getElementById('description').textContent = `Descripción: ${producto.description}`;
-                document.getElementById('sold').textContent = `Vendidos: ${producto.soldCount}`;
+                document.getElementById('category').textContent = ⁠ Categoría: ${producto.category} ⁠;
+                document.getElementById('description').textContent = ⁠ Descripción: ${producto.description} ⁠;
+                document.getElementById('sold').textContent = ⁠ Vendidos: ${producto.soldCount} ⁠;
 
                 // Actualizar la imagen principal
                 const mainImage = document.querySelector('.main-image img');
@@ -43,54 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 producto.images.forEach((imagen, index) => {
                     const imgElement = document.createElement('img');
                     imgElement.src = imagen;
-                    imgElement.alt = `Imagen miniatura ${index + 1}`;
+                    imgElement.alt = ⁠ Imagen miniatura ${index + 1} ⁠;
                     imgElement.addEventListener('click', () => {
                         // Cambiar la imagen principal al hacer clic en la miniatura
                         mainImage.src = imagen;
                     });
                     thumbnailsContainer.appendChild(imgElement);
                 });
+
+                // Mostrar productos relacionados utilizando la función existente
+                showRelatedProducts(producto.relatedProducts);
             })
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
-        function showRelatedProducts(relatedProducts) {
-    let relatedProductsContainer = document.getElementById('related-products-container');
-    relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
 
-    relatedProducts.forEach(product => {
-        let productHTML = `
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                    </div>
-                </div>
-            </div>
-        `;
-        relatedProductsContainer.innerHTML += productHTML;
-    });
-              // Agregar evento de clic para redirigir al producto relacionado
-    relatedProductsContainer.querySelectorAll('.card').forEach((card, index) => {
-        card.addEventListener('click', () => {
-            // Guardar el ID del producto relacionado en localStorage
-            localStorage.setItem('id', relatedProducts[index].id);
-            // Redirigir a la página del producto
-            window.location.href = 'product-info.html';
-        });
-    });
-}
-
-// Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
-fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-        // Mostrar la información del producto principal aquí
-        showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
-    })
-    .catch(error => console.error('Error:', error));
- // Solicitud para obtener los comentarios del producto
+        // Solicitud para obtener los comentarios del producto
         fetch(commentsApiUrl)
             .then(response => response.json())
             .then(comentarios => {
@@ -100,13 +68,12 @@ fetch(apiUrl)
                 comentarios.forEach(comentario => {
                     const commentElement = document.createElement('div');
                     commentElement.classList.add('comment');
-                   
-
- const starsHtml = renderStars(comentario.score);
+                    
+                    const starsHtml = renderStars(comentario.score);
                     
                     commentElement.innerHTML = `
                         <p><strong>Usuario:</strong> ${comentario.user}</p>
-                        <p><strong>Calificación:</strong> ${starsHtml} </p>
+ <p><strong>Calificación:</strong> ${starsHtml} </p>
                         <p><strong>Comentario:</strong> ${comentario.description}</p>
                         <p><strong>Fecha:</strong> ${comentario.dateTime}</p>
                     `;
@@ -121,8 +88,8 @@ fetch(apiUrl)
         console.error('Producto no encontrado en localStorage');
     }
 
-//Solicitud pitar-despintar estrellas
-     const stars = document.querySelectorAll(".star");
+    // Solicitud pitar-despintar estrellas
+    const stars = document.querySelectorAll(".star");
 
     stars.forEach(function(star, index) {
         star.addEventListener("click", function() {
@@ -132,7 +99,10 @@ fetch(apiUrl)
             for (let i=index+1; i<stars.length; i++) {
                 stars[i].classList.remove("checked");
             }
-            });   // Manejo del envío del formulario de calificación
+        });
+    });
+
+    // Manejo del envío del formulario de calificación
     document.getElementById('ratingForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Detener el envío del formulario
         
@@ -198,8 +168,7 @@ fetch(apiUrl)
         showRelatedProducts(data.relatedProducts); // Mostrar productos relacionados
     })
     .catch(error => console.error('Error:', error));
-    })
-})
+
 
 
   
