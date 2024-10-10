@@ -10,6 +10,11 @@ function renderStars(score) {
     return stars;
 }
 
+// Alternar modo oscuro
+document.getElementById('toggle-dark-mode').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode'); // Alterna la clase 'dark-mode' en el cuerpo
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
