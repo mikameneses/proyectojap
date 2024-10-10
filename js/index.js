@@ -39,3 +39,6 @@ document.addEventListener("DOMContentLoaded", function(){
         logout();               // Llama a la función logout
     });
 });
+
+
+
