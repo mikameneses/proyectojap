@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     relatedProducts.forEach(product => {
         let productHTML = `
-            <div class="col-md-3">
-                <div class="card mb-4 shadow-sm">
+            <div class="col-md-5">
+                <div class="card mb-3 shadow-sm">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}">
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
