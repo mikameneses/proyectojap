@@ -10,9 +10,26 @@ function renderStars(score) {
     return stars;
 }
 
+// Alternar modo oscuro
+document.getElementById('toggle-dark-mode').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode'); // Alterna la clase 'dark-mode' en el cuerpo
+ // Guardar la preferencia en localStorage
+    if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.add(savedTheme);
+    }
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
+  
 
     if (productId) {
         // Dirección de la API
@@ -50,18 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     thumbnailsContainer.appendChild(imgElement);
                 });
-            })
+          
+       showRelatedProducts(relatedProducts);
+              })
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
-        function showRelatedProducts(relatedProducts) {
+        
+         function showRelatedProducts(relatedProducts) {
     let relatedProductsContainer = document.getElementById('related-products-container');
     relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
 
     relatedProducts.forEach(product => {
         let productHTML = `
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
+            <div class="col-md-5">
+                <div class="card mb-3 shadow-sm">
                     <img src="${product.image}" class="card-img-top" alt="${product.name}">
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
@@ -136,9 +156,3 @@ fetch(apiUrl)
 })
 
 });
-
-
-  
-
-
-

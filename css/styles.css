@@ -371,4 +371,94 @@ a.custom-card:hover {
   display: flex;
   gap: 5px; /* Espacio entre las estrellas */
 }
+/* Estilos para el modo oscuro */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
 
+.dark-mode .navbar {
+  background-color: #333;
+}
+
+.dark-mode .product-details,
+.dark-mode .main-image,
+.dark-mode .product-images,
+.dark-mode footer {
+  background-color: #222;
+  color: #ffffff;
+}
+
+.dark-mode .card {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Contenedor de comentarios */
+#comments-container {
+    background-color: #f8f9fa; /* Fondo claro por defecto */
+}
+
+/* Comentarios */
+.comment {
+    background-color: #ffffff; /* Fondo blanco por defecto */
+}
+
+/* Estilo para el nombre de usuario */
+.comment p strong {
+    color: #007bff; /* Color destacado para el usuario */
+}
+
+/* Estilo para el texto del comentario */
+.comment p:nth-child(3) {
+    color: #343a40; /* Color oscuro por defecto */
+}
+
+/* Estilo para la fecha */
+.comment p:nth-child(4) {
+    color: #6c757d; /* Color gris para la fecha */
+}
+
+/* Modo oscuro */
+body.dark-mode #comments-container {
+    background-color: #333; /* Fondo oscuro para el contenedor */
+    color: #fff; /* Texto claro */
+}
+
+body.dark-mode .comment {
+    background-color: #444; /* Fondo oscuro para los comentarios */
+    border-bottom: 1px solid #555; /* Línea divisoria más oscura */
+}
+
+body.dark-mode .comment p {
+    color: #fff; /* Texto claro dentro de comentarios */
+}
+
+body.dark-mode .comment p:nth-child(3) {
+    color: #ddd; /* Color más claro para el texto en cursiva */
+}
+
+body.dark-mode .comment p:nth-child(4) {
+    color: #aaa; /* Color gris más claro para la fecha */
+}
+
+/* Estilo para las estrellas */
+body.dark-mode .star {
+    color: #fff; /* Estrellas blancas en modo oscuro */
+}
+
+body.dark-mode .star:hover,
+body.dark-mode .star.checked {
+    color: gold; /* Estrellas doradas al pasar el ratón o al estar seleccionadas */
+}
+
+/* Estilo del formulario de calificación */
+body.dark-mode #comment-rating {
+    background-color: #444; /* Fondo oscuro para la sección de calificación */
+    color: #fff; /* Texto claro */
+}
+
+/* Estilo de las estrellas de calificación */
+body.dark-mode .rating-content {
+    color: #fff; /* Texto claro en el contenido de calificación */
+}
