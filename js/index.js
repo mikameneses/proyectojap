@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     };
    
-    function logout() {
+   function logout() {
     // Elimina el token de autenticación del localStorage
     localStorage.removeItem('authToken');
     
     // Redirecciona al usuario a la página de inicio de sesión
-    window.location.href = '/login.html';  // asegúrate de que esta ruta sea la correcta.
+    window.location.href = 'login.html';  // Esto asume que login.html está en el mismo directorio
 }
 
 // Agrega un evento click al enlace de cerrar sesión
@@ -40,6 +40,8 @@ document.getElementById('logoutLink').addEventListener('click', function(event) 
     event.preventDefault(); // Previene el comportamiento por defecto del enlace
     logout();               // Llama a la función logout
 });
+ ⁠
+
 
 
 });
