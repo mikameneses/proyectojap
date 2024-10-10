@@ -26,5 +26,20 @@ document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("userDisplay").textContent = username;
         }
     };
+   
+    function logout() {
+    // Elimina el token de autenticación del localStorage
+    localStorage.removeItem('authToken');
+    
+    // Redirecciona al usuario a la página de inicio de sesión
+    window.location.href = '/login.html';  // asegúrate de que esta ruta sea la correcta.
+}
+
+// Agrega un evento click al enlace de cerrar sesión
+document.getElementById('logoutLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Previene el comportamiento por defecto del enlace
+    logout();               // Llama a la función logout
+});
+
 
 });
