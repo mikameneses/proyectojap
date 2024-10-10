@@ -12,16 +12,13 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
     
-    // Verifica si el usuario está autenticado
-    const loggedIn = localStorage.getItem('loggedIn');
-    if (!loggedIn) {
-        window.location.href = 'login.html';
-    }
+
 
     // Muestra el nombre de usuario si está almacenado
     var username = localStorage.getItem("username");
     if (username) {
         document.getElementById("userDisplay").textContent = username;
+               window.location.href = 'login.html';
     }
 
     // Función de logout
