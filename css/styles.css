@@ -371,4 +371,29 @@ a.custom-card:hover {
   display: flex;
   gap: 5px; /* Espacio entre las estrellas */
 }
+/* Estilos para el modo oscuro */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
 
+.dark-mode .navbar {
+  background-color: #333;
+}
+
+.dark-mode .product-details,
+.dark-mode .main-image,
+.dark-mode .product-images,
+.dark-mode footer {
+  background-color: #222;
+  color: #ffffff;
+}
+
+.dark-mode .card {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode .bi-star-fill {
+  color: #ffcc00; /* Estrellas en modo oscuro */
+}
