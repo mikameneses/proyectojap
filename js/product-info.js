@@ -21,17 +21,15 @@ document.getElementById('toggle-dark-mode').addEventListener('click', () => {
     }
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Aplicar el tema guardado en localStorage al cargar la página
-    const savedTheme = localStorage.getItem('theme');
+      const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.body.classList.add(savedTheme);
     }
-
-
-document.addEventListener('DOMContentLoaded', () => {
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
+  
 
     if (productId) {
         // Dirección de la API
@@ -69,11 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     thumbnailsContainer.appendChild(imgElement);
                 });
-            })
+          
+       showRelatedProducts(relatedProducts);
+              })
             .catch(error => {
                 console.error('Error al obtener los datos del producto:', error);
             });
-        function showRelatedProducts(relatedProducts) {
+        
+         function showRelatedProducts(relatedProducts) {
     let relatedProductsContainer = document.getElementById('related-products-container');
     relatedProductsContainer.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
 
@@ -155,9 +156,3 @@ fetch(apiUrl)
 })
 
 });
-
-
-  
-
-
-
