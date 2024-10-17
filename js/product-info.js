@@ -10,23 +10,34 @@ function renderStars(score) {
     return stars;
 }
 
-// Alternar modo oscuro
-document.getElementById('toggle-dark-mode').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); // Alterna la clase 'dark-mode' en el cuerpo
- // Guardar la preferencia en localStorage
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
+// Función para cambiar el tema
+function toggleTheme(isNightMode) {
+    if (isNightMode) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
     } else {
-        localStorage.setItem('theme', 'light');
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light-mode');
     }
-});
+}
 
-
+// Al cargar la página, verificar el tema guardado en localStorage
 document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.classList.add(savedTheme);
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark-mode') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeSwitch').checked = true;
+    } else {
+        document.body.classList.remove('dark-mode');
     }
+
+    // Agregar el evento para el switch de Modo Día / Noche
+    document.getElementById('themeSwitch').addEventListener('change', (event) => {
+        toggleTheme(event.target.checked);
+    });
+    }
+                          
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
   
