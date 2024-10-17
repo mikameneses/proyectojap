@@ -34,3 +34,30 @@ function validateProfile() {
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
     alert("Perfil guardado exitosamente.");
 }
+const profilePic = document.getElementById('profile-pic');
+const imageInput = document.getElementById('image-input');
+const saveBtn = document.getElementById('save-btn');
+
+
+window.onload = function() {
+    const storedImage = localStorage.getItem('profileImage');
+    if (storedImage) {
+        profilePic.src = storedImage;
+    }
+};
+imageInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profilePic.src = e.target.result;  // Mostrar la imagen seleccionada
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+saveBtn.addEventListener('click', function() {
+    const imageSrc = profilePic.src;
+    localStorage.setItem('profileImage', imageSrc);  // Guardar en localStorage
+    alert('¡Imagen de perfil guardada!');
+});
