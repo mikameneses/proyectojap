@@ -9,25 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("email").value = loggedInUser;
     }
 });
-  // Cargar el tema guardado
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.body.classList.add(savedTheme);
-    document.getElementById('themeSwitch').checked = (savedTheme === 'dark-theme');
-  }
 
-  // Agregar evento al switch
-  const themeSwitch = document.getElementById('themeSwitch');
-  themeSwitch.addEventListener('change', () => {
-    if (themeSwitch.checked) {
-      document.body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-      localStorage.setItem('theme', 'light-theme');
+ const switchElement = document.getElementById('theme-switch');
+    const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        switchElement.checked = true; // Activar el switch si está en modo oscuro
     }
-  });
+
+    // Guardar preferencia del modo cuando el usuario activa o desactiva el switch
+    switchElement.addEventListener('change', function () {
+        if (this.checked) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('dark-mode', 'true');
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('dark-mode', 'false');
+        }
+    });
 });
+
 function validateProfile() {
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
