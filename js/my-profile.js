@@ -34,30 +34,48 @@ function validateProfile() {
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
     alert("Perfil guardado exitosamente.");
 }
+// Seleccionar elementos del DOM
 const profilePic = document.getElementById('profile-pic');
 const imageInput = document.getElementById('image-input');
 const saveBtn = document.getElementById('save-btn');
 
-
-window.onload = function() {
+function loadProfileImage() {
     const storedImage = localStorage.getItem('profileImage');
     if (storedImage) {
-        profilePic.src = storedImage;
+        profilePic.src = storedImage;  // Cargar la imagen almacenada
+    } else {
+        console.log('No se encontró ninguna imagen almacenada');
     }
-};
-imageInput.addEventListener('change', function(event) {
+}
+
+function handleImageUpload(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            profilePic.src = e.target.result;  // Mostrar la imagen seleccionada
+            profilePic.src = e.target.result;  // Mostrar la imagen cargada
+            console.log('Imagen cargada y mostrada en el perfil');
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file);  // Convertir la imagen a Base64
     }
-});
+}
 
-saveBtn.addEventListener('click', function() {
+function saveProfileImage() {
     const imageSrc = profilePic.src;
-    localStorage.setItem('profileImage', imageSrc);  // Guardar en localStorage
-    alert('¡Imagen de perfil guardada!');
-});
+    if (imageSrc) {
+        localStorage.setItem('profileImage', imageSrc);  // Guardar en localStorage
+        alert('¡Imagen de perfil guardada exitosamente!');
+        console.log('Imagen guardada en localStorage');
+    } else {
+        alert('No se ha seleccionado ninguna imagen .');
+        console.log('No se pudo guardar la imagen porque no se ha seleccionado ninguna');
+    }
+}
+
+// Cargar la imagen de perfil al cargar la página
+window.onload = loadProfileImage;
+
+imageInput.addEventListener('change', handleImageUpload);
+
+// Guardar la imagen en el localStorage cuando se hace clic en el botón
+saveBtn.addEventListener('click', saveProfileImage);
