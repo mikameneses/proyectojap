@@ -15,6 +15,7 @@ function validateProfile() {
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
+    const imageSrc: profilePIC.src;
 
     // Validar que los campos obligatorios estén llenos
     if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
@@ -28,40 +29,25 @@ function validateProfile() {
         secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
         lastName,
         email,
-        phone
+        phone,
+        profileImage: imageSrc  
     };
 
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
     alert("Perfil guardado exitosamente.");
 }
-// Seleccionar elementos del DOM
-const profilePic = document.getElementById('profile-pic');
-const imageInput = document.getElementById('image-input');
-const saveBtn = document.getElementById('save-btn');
-
 // Cargar imagen de perfil desde el localStorage cuando la página se carga
 window.onload = function() {
-    const storedImage = localStorage.getItem('profileImage');
-    if (storedImage) {
-        profilePic.src = storedImage;
+    const userProfile = JSON.parse(localStorage.getItem("userProfile"));
+    if (userProfile) {
+        document.getElementById("name").value = userProfile.name || "";
+        document.getElementById("secondName").value = userProfile.secondName || "";
+        document.getElementById("lastName").value = userProfile.lastName || "";
+        document.getElementById("email").value = userProfile.email || "";
+        document.getElementById("phone").value = userProfile.phone || "";
+        if (userProfile.profileImage) {
+            profilePic.src = userProfile.profileImage;
+      
     }
 };
 
-// Escuchar cambios en el input de la imagen
-imageInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profilePic.src = e.target.result;  // Mostrar la imagen seleccionada
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-// Guardar la imagen en el localStorage cuando se hace clic en el botón
-saveBtn.addEventListener('click', function() {
-    const imageSrc = profilePic.src;
-    localStorage.setItem('profileImage', imageSrc);  // Guardar en localStorage
-    alert('¡Imagen de perfil guardada!');
-});
