@@ -371,6 +371,7 @@ a.custom-card:hover {
   display: flex;
   gap: 5px; /* Espacio entre las estrellas */
 }
+
 /* Estilos para el modo oscuro */
 .dark-mode {
   background-color: #121212;
@@ -461,4 +462,12 @@ body.dark-mode #comment-rating {
 /* Estilo de las estrellas de calificación */
 body.dark-mode .rating-content {
     color: #fff; /* Texto claro en el contenido de calificación */
+}
+
+/* Input de texto para comentarios en modo oscuro */
+body.dark-mode input[type="text"],
+body.dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
 }
