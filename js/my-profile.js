@@ -9,7 +9,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("email").value = loggedInUser;
     }
 });
+  // Cargar el tema guardado
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.body.classList.add(savedTheme);
+    document.getElementById('themeSwitch').checked = (savedTheme === 'dark-theme');
+  }
 
+  // Agregar evento al switch
+  const themeSwitch = document.getElementById('themeSwitch');
+  themeSwitch.addEventListener('change', () => {
+    if (themeSwitch.checked) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light-theme');
+    }
+  });
+});
 function validateProfile() {
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
