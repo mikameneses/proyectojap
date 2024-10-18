@@ -8,27 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Rellenar el campo de E-mail con el que está en el almacenamiento local
         document.getElementById("email").value = loggedInUser;
     }
-});
 
- const switchElement = document.getElementById('theme-switch');
-    const isDarkMode = localStorage.getItem('dark-mode') === 'true';
 
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-        switchElement.checked = true; // Activar el switch si está en modo oscuro
-    }
+    // Cargar perfil e imagen al cargar la página
+    const userProfile = JSON.parse(localStorage.getItem("userProfile"));
+    const profilePic = document.getElementById('profile-pic');
 
-    // Guardar preferencia del modo cuando el usuario activa o desactiva el switch
-    switchElement.addEventListener('change', function () {
-        if (this.checked) {
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('dark-mode', 'true');
-        } else {
-            document.body.classList.remove('dark-mode');
-            localStorage.setItem('dark-mode', 'false');
-        }
-    });
-});
 
 function validateProfile() {
     const name = document.getElementById("name").value;
@@ -36,21 +21,58 @@ function validateProfile() {
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
 
-    // Validar que los campos obligatorios estén llenos
-    if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
-        alert("Por favor, complete todos los campos obligatorios.");
-        return;
+
+    if (userProfile) {
+        document.getElementById("name").value = userProfile.name || "";
+        document.getElementById("secondName").value = userProfile.secondName || "";
+        document.getElementById("lastName").value = userProfile.lastName || "";
+        document.getElementById("email").value = userProfile.email || "";
+        document.getElementById("phone").value = userProfile.phone || "";
+        if (userProfile.profileImage) {
+            profilePic.src = userProfile.profileImage;  // Cargar imagen del perfil
+        }
     }
 
-    // Guardar los datos en el almacenamiento local
-    const userProfile = {
-        name,
-        secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
-        lastName,
-        email,
-        phone
-    };
+    const imageInput = document.getElementById('image-input');
+    const saveBtn = document.getElementById('save-btn');
 
-    localStorage.setItem("userProfile", JSON.stringify(userProfile));
-    alert("Perfil guardado exitosamente.");
-}
+    // Escuchar cambios en el input de la imagen
+    imageInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profilePic.src = e.target.result;  // Mostrar la imagen seleccionada
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Guardar el perfil (incluida la imagen) en el localStorage
+    saveBtn.addEventListener('click', function() {
+        const name = document.getElementById("name").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const imageSrc = profilePic.src;  // Obtener la imagen
+
+        // Validar que los campos obligatorios estén llenos
+        if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
+            alert("Por favor, complete todos los campos obligatorios.");
+            return;
+        }
+
+        // Guardar los datos en el almacenamiento local
+        const userProfile = {
+            name,
+            secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
+            lastName,
+            email,
+            phone,
+            profileImage: imageSrc  // Guardar la imagen junto con los datos del perfil
+        };
+
+        localStorage.setItem("userProfile", JSON.stringify(userProfile));
+        alert('Perfil y imagen de perfil guardados exitosamente.');
+    });
+});
