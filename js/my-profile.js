@@ -9,9 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("email").value = loggedInUser;
     }
 
+
     // Cargar perfil e imagen al cargar la página
     const userProfile = JSON.parse(localStorage.getItem("userProfile"));
     const profilePic = document.getElementById('profile-pic');
+
+
+function validateProfile() {
+    const name = document.getElementById("name").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+
 
     if (userProfile) {
         document.getElementById("name").value = userProfile.name || "";

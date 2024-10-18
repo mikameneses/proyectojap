@@ -10,23 +10,14 @@ function renderStars(score) {
     return stars;
 }
 
-// Alternar modo oscuro
-document.getElementById('toggle-dark-mode').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); // Alterna la clase 'dark-mode' en el cuerpo
- // Guardar la preferencia en localStorage
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
+window.addEventListener('DOMContentLoaded', () => {
+    const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
     }
 });
-
-
-document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.classList.add(savedTheme);
-    }
+                          
     // Obtener el ID del producto guardado en localStorage
     const productId = localStorage.getItem('id');
   
