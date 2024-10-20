@@ -11,6 +11,7 @@ function renderStars(score) {
 }
 
     // Obtener el ID del producto guardado en localStorage
+    document.addEventListener('DOMContentLoaded', () => {
     const productId = localStorage.getItem('id');
   
 
