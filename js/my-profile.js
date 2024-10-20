@@ -17,6 +17,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
         
     }
+
+ // Modo Día/Noche
+    const themeSwitch = document.getElementById("theme-switch");
+    themeSwitch.addEventListener("change", function() {
+        if (this.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    // Cargar tema al inicio
+    window.onload = function() {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            themeSwitch.checked = true;
+            document.body.classList.add("dark-mode");
+        }
+    };
 });
 
 function validateProfile() {
@@ -47,22 +68,4 @@ function validateProfile() {
     // Actualizar el nombre de usuario en el localStorage si se modifica el email
     localStorage.setItem("username", email);
     
-    // Modo Día/Noche
-document.getElementById("theme-switch").addEventListener("change", function() {
-    if (this.checked) {
-        document.body.classList.add("dark-mode");
-        localStorage.setItem("theme", "dark");
-    } else {
-        document.body.classList.remove("dark-mode");
-        localStorage.setItem("theme", "light");
-    }
-});
 
-// Cargar tema al inicio
-window.onload = function() {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-        document.getElementById("theme-switch").checked = true;
-        document.body.classList.add("dark-mode");
-    }
-};
