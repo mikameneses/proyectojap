@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("secondName").value = userProfile ? userProfile.secondName : ""; // Segundo nombre
         document.getElementById("lastName").value = userProfile ? userProfile.lastName : ""; // Apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
+         if (userProfile && userProfile.theme === "dark") {
+            document.body.classList.add("dark-mode");
+            themeSwitch.checked = true; // Marcamos el checkbox si el tema es oscuro
+        } else {
+            document.body.classList.remove("dark-mode");
+            themeSwitch.checked = false; // Dejamos el checkbox desmarcado si el tema es claro
+        }
     }
 });
 
@@ -30,6 +37,7 @@ function validateProfile() {
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
+    const themeSwitch = document.getElementById("theme-switch");
 
     // Validar que los campos obligatorios estén llenos
     if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
@@ -44,6 +52,7 @@ function validateProfile() {
         lastName,
         email,
         phone
+         theme: themeSwitch.checked ? "dark" : "light" // Guardamos el estado del tema
     };
 
 
