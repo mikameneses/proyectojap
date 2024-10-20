@@ -38,6 +38,8 @@ function validateProfile() {
         email,
         phone
     };
+
+    const toggleSwitch = document.querySelector('#theme-switch');
      // Aplicar el tema guardado en localStorage
     if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
