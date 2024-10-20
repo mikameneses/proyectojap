@@ -2,7 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Comprobar si el usuario está logueado
     const loggedInUser = localStorage.getItem("username");
     const userProfile = JSON.parse(localStorage.getItem("userProfile"));
+    const themeSwitch = document.getElementById("theme-switch");
 
+     const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeSwitch.checked = true; // Marcamos el checkbox si el tema es oscuro
+    }
+    
     if (!loggedInUser) {
         alert("Debes iniciar sesión para acceder al perfil.");
         window.location.href = "login.html"; // Redirigir al login si no está logueado
@@ -39,30 +46,19 @@ function validateProfile() {
         phone
     };
 
-    const toggleSwitch = document.querySelector('#theme-switch');
-     // Aplicar el tema guardado en localStorage
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-        themeSwitch.checked = true;
-    }
-
-    themeSwitch.addEventListener("change", function () {
-        if (themeSwitch.checked) {
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("theme", "light");
-        }
-    });
-});
-
 
     // Guardar el perfil del usuario
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
     // Actualizar el nombre de usuario en el localStorage si se modifica el email
     localStorage.setItem("username", email);
+    
+        // Guardar el tema seleccionado
+    if (themeSwitch.checked) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
 
     alert("Perfil guardado exitosamente.");
 }
