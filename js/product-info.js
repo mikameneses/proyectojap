@@ -14,22 +14,11 @@ function renderStars(score) {
     const savedTheme = localStorage.getItem("theme");
 
     // Aplicar el tema guardado en localStorage
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-        themeSwitch.checked = true;
-    }
-
-    themeSwitch.addEventListener("change", function () {
-        if (themeSwitch.checked) {
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("theme", "light");
-        }
-    });
-});
-
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+} else {
+    document.body.classList.remove('dark-mode');
+}
     document.addEventListener('DOMContentLoaded', () => {
 const productId = localStorage.getItem('id');
   
