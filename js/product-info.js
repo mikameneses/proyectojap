@@ -146,3 +146,26 @@ fetch(apiUrl)
 })
 
 });
+// Modo Día/Noche
+document.addEventListener('DOMContentLoaded', () => {
+    // Verificar preferencia de tema almacenada
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("theme-switch").checked = true; 
+    }
+
+    // Listener para cambiar el tema
+    const themeSwitch = document.getElementById("theme-switch");
+    if (themeSwitch) {
+        themeSwitch.addEventListener("change", function () {
+            if (this.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("theme", "light");
+            }
+        });
+    }
+});
