@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("name").value = userProfile ? userProfile.name : ""; // Nombre
         document.getElementById("secondName").value = userProfile ? userProfile.secondName : ""; // Segundo nombre
         document.getElementById("lastName").value = userProfile ? userProfile.lastName : ""; // Apellido
+        document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
     }
 });
@@ -31,10 +32,11 @@ function validateProfile() {
     }
 
     // Guardar los datos en el almacenamiento local
-    const userProfile = {
+    var userProfile = {
         name,
         secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
         lastName,
+        secondLastName: document.getElementById("secondLastName").value, // Este campo no es obligatorio
         email,
         phone
     };
@@ -47,4 +49,5 @@ function validateProfile() {
 
     alert("Perfil guardado exitosamente.");
 }
+
 
