@@ -38,6 +38,23 @@ function validateProfile() {
         email,
         phone
     };
+     // Aplicar el tema guardado en localStorage
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeSwitch.checked = true;
+    }
+
+    themeSwitch.addEventListener("change", function () {
+        if (themeSwitch.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+        }
+    });
+});
+
 
     // Guardar el perfil del usuario
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
