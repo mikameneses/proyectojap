@@ -9,19 +9,19 @@ function renderStars(score) {
     }
     return stars;
 }
-   document.addEventListener("DOMContentLoaded", function () {
-    const themeSwitch = document.getElementById("theme-switch");
+
+document.addEventListener("DOMContentLoaded", function () {
     const savedTheme = localStorage.getItem("theme");
 
     // Aplicar el tema guardado en localStorage
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-} else {
-    document.body.classList.remove('dark-mode');
-}
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
+    
     document.addEventListener('DOMContentLoaded', () => {
 const productId = localStorage.getItem('id');
-  
 
     if (productId) {
         // Dirección de la API
