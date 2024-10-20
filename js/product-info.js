@@ -9,8 +9,7 @@ function renderStars(score) {
     }
     return stars;
 }
-
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener("DOMContentLoaded", function () {
     const themeSwitch = document.getElementById("theme-switch");
     const savedTheme = localStorage.getItem("theme");
 
@@ -30,6 +29,8 @@ function renderStars(score) {
         }
     });
 });
+
+    document.addEventListener('DOMContentLoaded', () => {
 const productId = localStorage.getItem('id');
   
 
@@ -104,7 +105,7 @@ const productId = localStorage.getItem('id');
     });
 }
 
-// Ejemplo de cómo llamar a la función una vez que tienes los datos del producto
+
 fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
