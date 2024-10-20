@@ -11,18 +11,16 @@ function renderStars(score) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Recuperar y aplicar el tema guardado en localStorage
     const savedTheme = localStorage.getItem("theme");
-
-    // Aplicar el tema guardado en localStorage
     if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
     } else {
         document.body.classList.remove("dark-mode");
     }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-const productId = localStorage.getItem('id');
 
+    // Obtener el ID del producto desde localStorage
+    const productId = localStorage.getItem('id');
     if (productId) {
         // Dirección de la API
         const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
