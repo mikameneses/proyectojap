@@ -30,15 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Cargar tema al inicio
-    window.onload = function() {
+  const loadTheme = () => {
         const theme = localStorage.getItem("theme");
         if (theme === "dark") {
             themeSwitch.checked = true;
             document.body.classList.add("dark-mode");
         }
     };
-});
+    loadTheme();
+
 
 function validateProfile() {
     const name = document.getElementById("name").value;
