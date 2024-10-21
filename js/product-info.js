@@ -11,24 +11,6 @@ function renderStars(score) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-   const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-        document.body.classList.add("dark-mode");
-        document.getElementById("theme-switch").checked = true; 
-    }
-
-    // Listener para cambiar el tema
-    const themeSwitch = document.getElementById("theme-switch");
-    if (themeSwitch) {
-        themeSwitch.addEventListener("change", function () {
-            if (this.checked) {
-                document.body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark");
-            } else {
-                document.body.classList.remove("dark-mode");
-                localStorage.setItem("theme", "light");
-            }
-        });
 
     // Obtener el ID del producto desde localStorage
     const productId = localStorage.getItem('id');
