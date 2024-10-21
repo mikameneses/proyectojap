@@ -20,34 +20,67 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function validateProfile() {
-    const name = document.getElementById("name").value;
-    const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+    // Obtener los valores de los campos
+    const name = document.getElementById("name");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
 
-    // Validar que los campos obligatorios estén llenos
-    if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
-        alert("Por favor, complete todos los campos obligatorios.");
-        return;
+    // Limpiar mensajes previos y estilos de error
+    [name, lastName, email].forEach(input => {
+        input.classList.remove('is-invalid');
+        document.getElementById(`${input.id}-feedback`).innerHTML = '';
+    });
+
+    let valid = true;
+
+    // Validar que los campos obligatorios no estén vacíos
+    if (name.value.trim() === "") {
+        name.classList.add('is-invalid');
+        document.getElementById('name-feedback').innerHTML = 'El nombre es obligatorio.';
+        valid = false;
     }
+
+    if (lastName.value.trim() === "") {
+        lastName.classList.add('is-invalid');
+        document.getElementById('lastName-feedback').innerHTML = 'El apellido es obligatorio.';
+        valid = false;
+    }
+
+    if (email.value.trim() === "") {
+        email.classList.add('is-invalid');
+        document.getElementById('email-feedback').innerHTML = 'El correo electrónico es obligatorio.';
+        valid = false;
+    } else if (!validateEmail(email.value.trim())) {
+        email.classList.add('is-invalid');
+        document.getElementById('email-feedback').innerHTML = 'El correo debe contener un "@" válido.';
+        valid = false;
+    }
+
+    // Si no es válido, no continuar con el guardado
+    if (!valid) return;
 
     // Guardar los datos en el almacenamiento local
     var userProfile = {
-        name,
+        name: name.value,
         secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
-        lastName,
+        lastName: lastName.value,
         secondLastName: document.getElementById("secondLastName").value, // Este campo no es obligatorio
-        email,
-        phone
+        email: email.value,
+        phone: document.getElementById("phone").value // Este campo no es obligatorio
     };
 
-    // Guardar el perfil del usuario
+    // Guardar el perfil del usuario en el almacenamiento local
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
     // Actualizar el nombre de usuario en el localStorage si se modifica el email
-    localStorage.setItem("username", email);
+    localStorage.setItem("username", email.value);
 
     alert("Perfil guardado exitosamente.");
 }
 
+// Función para validar el formato del email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
 
