@@ -39,3 +39,21 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.getElementById("logoutLink").addEventListener("click", function (event) {
+  event.preventDefault(); // Evita que el enlace realice una acción por defecto
+
+  // Obtener el correo electrónico para conservarlo
+  const email = localStorage.getItem("username");
+
+  // Eliminar todos los datos del perfil del usuario
+  localStorage.removeItem("userProfile");
+
+  // Conservar solo el correo electrónico
+  localStorage.setItem("username", email);
+
+  alert("Has cerrado sesión exitosamente.");
+
+  // Redirigir al usuario a la página de inicio o a la página de inicio de sesión
+  window.location.href = "index.html"; // Cambia esto si quieres redirigir a otra página
+});
