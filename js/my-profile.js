@@ -1,15 +1,27 @@
+    function validateProfile() {
+    let valid = true;  // Inicializamos la variable para el estado de validación
+
+    // Remover clases de error antes de validar
+    name.classList.remove('is-invalid');
+    lastName.classList.remove('is-invalid');
+    email.classList.remove('is-invalid');
+    phone.classList.remove('is-invalid');
+
+    // Validar nombre
     if (name.value.trim() === "") {
         name.classList.add('is-invalid');
         document.getElementById('name-feedback').innerHTML = 'El nombre es obligatorio.';
         valid = false;
     }
 
+    // Validar apellido
     if (lastName.value.trim() === "") {
         lastName.classList.add('is-invalid');
         document.getElementById('lastName-feedback').innerHTML = 'El apellido es obligatorio.';
         valid = false;
     }
 
+    // Validar correo electrónico
     if (email.value.trim() === "") {
         email.classList.add('is-invalid');
         document.getElementById('email-feedback').innerHTML = 'El correo electrónico es obligatorio.';
@@ -19,26 +31,33 @@
         document.getElementById('email-feedback').innerHTML = 'El correo debe contener un "@" válido.';
         valid = false;
     }
-  // Validar que los campos obligatorios estén llenos
-    if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
-        alert("Por favor, complete todos los campos obligatorios.");
-        return;
+
+    // Validar teléfono
+    if (phone.value.trim() === "") {
+        phone.classList.add('is-invalid');
+        document.getElementById('phone-feedback').innerHTML = 'El teléfono es obligatorio.';
+        valid = false;
     }
 
     // Si no es válido, no continuar con el guardado
     if (!valid) return;
 
+    // Crear el objeto del perfil del usuario
+    const userProfile = {
+        name: name.value.trim(),
+        lastName: lastName.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim()
+    };
 
-    // Guardar el perfil del usuario en el almacenamiento local
+    // Guardar el perfil del usuario en localStorage
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
-    // Actualizar el nombre de usuario en el localStorage si se modifica el email
+    // Actualizar el nombre de usuario en localStorage si se modifica el email
     localStorage.setItem("username", email.value);
->>>>>>> main
 
     alert("Perfil guardado exitosamente.");
 }
-
 
 // Guardar el perfil cuando se hace clic en el botón
 document.getElementById("save-profile-btn").addEventListener('click', validateProfile);
