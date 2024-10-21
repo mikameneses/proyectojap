@@ -56,58 +56,48 @@
         <h1>Perfil de usuario</h1>
         <form id="profileForm">
           <div class="row mb-3">
-            <label for="name" class="col-sm-4 col-form-label">Nombre:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="name" required/>
-            </div>
+              <label for="name" class="col-sm-4 col-form-label">Nombre:</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="name" required />
+                  <div class="invalid-feedback" id="name-feedback"></div>
+              </div>
           </div>
           <div class="row mb-3">
-            <label for="secondName" class="col-sm-4 col-form-label">Segundo nombre:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="secondName" required/>
-            </div>
+              <label for="secondName" class="col-sm-4 col-form-label">Segundo nombre:</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="secondName" />
+              </div>
           </div>
           <div class="row mb-3">
-            <label for="lastName" class="col-sm-4 col-form-label">Apellido:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="lastName" required/>
-            </div>
+              <label for="lastName" class="col-sm-4 col-form-label">Apellido:</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="lastName" required />
+                  <div class="invalid-feedback" id="lastName-feedback"></div>
+              </div>
           </div>
           <div class="row mb-3">
-            <label for="lastName" class="col-sm-4 col-form-label">Segundo Apellido:</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" id="secondLastName"/>
-            </div>
+              <label for="secondLastName" class="col-sm-4 col-form-label">Segundo Apellido:</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="secondLastName" />
+              </div>
           </div>
           <div class="row mb-3">
-            <label for="email" class="col-sm-4 col-form-label">E-mail:</label>
-            <div class="col-sm-8">
-              <input type="email" class="form-control" id="email" required/>
-            </div>
+              <label for="email" class="col-sm-4 col-form-label">E-mail:</label>
+              <div class="col-sm-8">
+                  <input type="email" class="form-control" id="email" required />
+                  <div class="invalid-feedback" id="email-feedback"></div>
+              </div>
           </div>
           <div class="row mb-3">
-            <label for="phone" class="col-sm-4 col-form-label">Teléfono de contacto:</label>
-            <div class="col-sm-8">
-              <input type="tel" class="form-control" id="phone" required/>
-            </div>
+              <label for="phone" class="col-sm-4 col-form-label">Teléfono de contacto:</label>
+              <div class="col-sm-8">
+                  <input type="tel" class="form-control" id="phone" />
+              </div>
           </div>
-          <div>
-              <img id="profile-pic"src="default-profile.png" alt="profile picture">
-              <input type="file" id="image-input" accept="image/*">
-            </div>
-          <div class="row mb-3">
-  <label for="theme-switch" class="col-sm-4 col-form-label">Modo Día/Noche:</label>
-     <div class="col-sm-8">
-     <label class="switch">
-      <input type="checkbox" id="theme-switch">
-      <span class="slider round"></span>
-       </label>
-        </div>
-        </div>
- 
-        </div>
           <button type="button" class="btn btn-primary mb-3" onclick="validateProfile()">Guardar cambios</button>
-        </form>
+      </form>
+      
+      
       </div>
     </div>
   </div>

@@ -38,6 +38,7 @@ document.getElementById('image-input').addEventListener('change', function(event
 
 function validateProfile() {
 
+
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
@@ -98,16 +99,21 @@ function validateProfile() {
     if (!valid) return;
 
 
+
     // Guardar el perfil del usuario en el almacenamiento local
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
     // Actualizar el nombre de usuario en el localStorage si se modifica el email
     localStorage.setItem("username", email.value);
->>>>>>> main
 
     alert("Perfil guardado exitosamente.");
 }
 
+// Función para validar el formato del email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
 
 // Guardar el perfil cuando se hace clic en el botón
 document.getElementById("save-profile-btn").addEventListener('click', validateProfile);
