@@ -17,6 +17,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
     }
+ // Modo Día/Noche
+    const themeSwitch = document.getElementById("theme-switch");
+    themeSwitch.addEventListener("change", function() {
+        if (this.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+        }
+    });
+
+    // Cargar tema al inicio
+    const loadTheme = () => {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            themeSwitch.checked = true;
+            document.body.classList.add("dark-mode");
+        }
+    };
+    loadTheme();
 });
 
 function validateProfile() {
