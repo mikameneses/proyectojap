@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,29 +7,20 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
- 
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
+          <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
+          <li class="nav-item"></li>
         </ul>
       </div>
     </div>
@@ -40,49 +30,60 @@
       <div class="col-md-6">
         <h1>Perfil de usuario</h1>
         <form id="profileForm">
+          <!-- Campo para imagen de perfil -->
           <div class="row mb-3">
-              <label for="name" class="col-sm-4 col-form-label">Nombre:</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="name" required />
-                  <div class="invalid-feedback" id="name-feedback"></div>
-              </div>
+            <label class="col-sm-4 col-form-label">Imagen de perfil:</label>
+            <div class="col-sm-8">
+              <input type="file" class="form-control" id="image-input" accept="image/*">
+              <img id="profile-pic" src="#" alt="Tu imagen de perfil" style="max-width: 100px; margin-top: 10px;">
+            </div>
+          </div>
+          <!-- Fin del campo para imagen de perfil -->
+
+          <!-- Campos del perfil de usuario -->
+          <div class="row mb-3">
+            <label for="name" class="col-sm-4 col-form-label">Nombre:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="name" required />
+              <div class="invalid-feedback" id="name-feedback"></div>
+            </div>
           </div>
           <div class="row mb-3">
-              <label for="secondName" class="col-sm-4 col-form-label">Segundo nombre:</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="secondName" />
-              </div>
+            <label for="secondName" class="col-sm-4 col-form-label">Segundo nombre:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="secondName" />
+            </div>
           </div>
           <div class="row mb-3">
-              <label for="lastName" class="col-sm-4 col-form-label">Apellido:</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="lastName" required />
-                  <div class="invalid-feedback" id="lastName-feedback"></div>
-              </div>
+            <label for="lastName" class="col-sm-4 col-form-label">Apellido:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="lastName" required />
+              <div class="invalid-feedback"
+id="lastName-feedback"></div>
+            </div>
           </div>
           <div class="row mb-3">
-              <label for="secondLastName" class="col-sm-4 col-form-label">Segundo Apellido:</label>
-              <div class="col-sm-8">
-                  <input type="text" class="form-control" id="secondLastName" />
-              </div>
+            <label for="secondLastName" class="col-sm-4 col-form-label">Segundo Apellido:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="secondLastName" />
+            </div>
           </div>
           <div class="row mb-3">
-              <label for="email" class="col-sm-4 col-form-label">E-mail:</label>
-              <div class="col-sm-8">
-                  <input type="email" class="form-control" id="email" required />
-                  <div class="invalid-feedback" id="email-feedback"></div>
-              </div>
+            <label for="email" class="col-sm-4 col-form-label">E-mail:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="email" required />
+              <div class="invalid-feedback" id="email-feedback"></div>
+            </div>
           </div>
           <div class="row mb-3">
-              <label for="phone" class="col-sm-4 col-form-label">Teléfono de contacto:</label>
-              <div class="col-sm-8">
-                  <input type="tel" class="form-control" id="phone" />
-              </div>
+            <label for="phone" class="col-sm-4 col-form-label">Teléfono de contacto:</label>
+            <div class="col-sm-8">
+              <input type="tel" class="form-control" id="phone" />
+            </div>
           </div>
-          <button type="button" class="btn btn-primary mb-3" onclick="validateProfile()">Guardar cambios</button>
-      </form>
-      
-      
+          <!-- Actualizar el botón para usar event listener -->
+          <button type="button" class="btn btn-primary mb-3" id="save-profile-btn">Guardar cambios</button>
+        </form>
       </div>
     </div>
   </div>
@@ -98,5 +99,4 @@
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
-
 </html>
