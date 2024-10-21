@@ -426,12 +426,61 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-      /* Estilos para el modo oscuro */
 }
+      /* Estilos para el modo oscuro */
+/* Estilos para el modo oscuro */
 body.dark-mode {
+
+.jumbotron,
+.card-body,
+.container,
+.site-header,
+.dropzone,
+.comment {
+    background-color: #1e1e1e; /* Fondo oscuro para secciones */
+    color: #e0e0e0; /* Texto claro */
+}
+
+.jumbotron .container {
+    background-color: rgba(30, 30, 30, 0.7); /* Fondo semi-transparente oscuro */
+}
+
+nav a {
+    color: #e0e0e0; /* Enlaces claros */
+}
+
+.site-header a {
+    color: #e0e0e0; /* Enlaces del header claros */
+}
+
+.product-images img {
+    border: 2px solid #444; /* Borde para las imágenes */
+}
+
+#comments-container {
+    background-color: #2c2c2c; /* Fondo de comentarios */
+    color: #e0e0e0; /* Texto de comentarios claro */
+}
+
+.comment {
+    background-color: #2a2a2a; /* Fondo oscuro para cada comentario */
+}
+
+.star {
+    color: #fbc02d; /* Color de estrellas en modo oscuro */
+}
+
+.rating-control {
+    background-color: #1e1e1e; /* Fondo de controles de rating */
+}
+
+.rating-group-left {
+    color: #e0e0e0; /* Color de texto en el grupo de rating */
+}
    background-color: #121212; /* Fondo oscuro */
     color: #e0e0e0; /* Texto claro */
 }
+
       
     .bd-placeholder-img {
       font-size: 1.125rem;
