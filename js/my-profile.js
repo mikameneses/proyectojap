@@ -14,14 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("name").value = userProfile ? userProfile.name : ""; // Nombre
         document.getElementById("secondName").value = userProfile ? userProfile.secondName : ""; // Segundo nombre
         document.getElementById("lastName").value = userProfile ? userProfile.lastName : ""; // Apellido
-        document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Apellido
+        document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Segundo apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
-         // Cargar imagen de perfil si existe
-        if (storedProfile.profileImage) {
-            document.getElementById("profile-pic").src = storedProfile.profileImage;
+
+        // Cargar imagen de perfil si existe
+        if (userProfile && userProfile.profileImage) {
+            document.getElementById("profile-pic").src = userProfile.profileImage;
         }
     }
 });
+
 // Evento para cambiar la imagen de perfil
 document.getElementById('image-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
@@ -34,36 +36,35 @@ document.getElementById('image-input').addEventListener('change', function(event
     }
 });
 
-function validateProfile() {
+function saveProfile() {
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
     const profileImage = document.getElementById("profile-pic").src;  // Obtener la imagen de perfil actual
+
     // Validar que los campos obligatorios estén llenos
     if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
         alert("Por favor, complete todos los campos obligatorios.");
         return;
     }
 
-    // Guardar los datos en el almacenamiento local
+    // Crear el objeto del perfil del usuario
     var userProfile = {
         name,
-        secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
+        secondName: document.getElementById("secondName").value, // Campo opcional
         lastName,
-        secondLastName: document.getElementById("secondLastName").value, // Este campo no es obligatorio
+        secondLastName: document.getElementById("secondLastName").value, // Campo opcional
         email,
         phone,
-        profileImage
+        profileImage  // Guardar la imagen junto con los datos del perfil
     };
 
-    // Guardar el perfil del usuario
+    // Guardar el perfil del usuario en localStorage
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
-    // Actualizar el nombre de usuario en el localStorage si se modifica el email
+    // Actualizar el nombre de usuario (email) en el almacenamiento local si se modifica
     localStorage.setItem("username", email);
-
-    
 
     alert("Perfil guardado exitosamente.");
 }
