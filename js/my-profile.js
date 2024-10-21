@@ -17,6 +17,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
     }
+     // Cargar imagen de perfil si existe
+        if (userProfile && userProfile.profileImage) {
+            document.getElementById("profile-pic").src = userProfile.profileImage;
+        }
+    }
+});
+
+// Evento para cambiar la imagen de perfil
+document.getElementById('image-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profile-pic').src = e.target.result;  // Mostrar la imagen seleccionada
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
  // Modo Día/Noche
     const themeSwitch = document.getElementById("theme-switch");
     themeSwitch.addEventListener("change", function() {
@@ -45,6 +64,8 @@ function validateProfile() {
     const name = document.getElementById("name");
     const lastName = document.getElementById("lastName");
     const email = document.getElementById("email");
+    const profileImage = document.getElementById("profile-pic").src;  // Obtener la imagen de perfil actual
+
 
     // Limpiar mensajes previos y estilos de error
     [name, lastName, email].forEach(input => {
@@ -87,7 +108,8 @@ function validateProfile() {
         lastName: lastName.value,
         secondLastName: document.getElementById("secondLastName").value, // Este campo no es obligatorio
         email: email.value,
-        phone: document.getElementById("phone").value // Este campo no es obligatorio
+        phone: document.getElementById("phone").value, // Este campo no es obligatorio
+        profileImage  // Guardar la imagen junto con los datos del perfil
     };
 
     // Guardar el perfil del usuario en el almacenamiento local
