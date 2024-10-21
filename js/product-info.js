@@ -121,10 +121,19 @@ fetch(apiUrl)
             .catch(error => {
                 console.error('Error al obtener los comentarios:', error);
             });
-         // Modo Día/Noche
+      // Modo Día/Noche
         const theme = localStorage.getItem("theme");
         if (theme === "dark") {
             document.body.classList.add("dark-mode");
+        }
+
+        const themeSwitch = document.getElementById("theme-switch");
+        if (themeSwitch) {
+            themeSwitch.checked = (theme === "dark");
+            themeSwitch.addEventListener("change", function () {
+                if (this.checked) {
+                    document.body.classList.add("dark-mode");
+                    localStorage.setItem("theme", "dark");
                 } else {
                     document.body.classList.remove("dark-mode");
                     localStorage.setItem("theme", "light");
