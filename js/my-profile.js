@@ -14,17 +14,51 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("name").value = userProfile ? userProfile.name : ""; // Nombre
         document.getElementById("secondName").value = userProfile ? userProfile.secondName : ""; // Segundo nombre
         document.getElementById("lastName").value = userProfile ? userProfile.lastName : ""; // Apellido
-        document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Apellido
+        document.getElementById("secondLastName").value = userProfile ? userProfile.secondLastName : ""; // Segundo apellido
         document.getElementById("phone").value = userProfile ? userProfile.phone : ""; // Teléfono
+
+        // Cargar imagen de perfil si existe
+        if (userProfile && userProfile.profileImage) {
+            document.getElementById("profile-pic").src = userProfile.profileImage;
+        }
+    }
+});
+
+// Evento para cambiar la imagen de perfil
+document.getElementById('image-input').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profile-pic').src = e.target.result;  // Mostrar la imagen seleccionada
+        };
+        reader.readAsDataURL(file);
     }
 });
 
 function validateProfile() {
-    // Obtener los valores de los campos
-    const name = document.getElementById("name");
-    const lastName = document.getElementById("lastName");
-    const email = document.getElementById("email");
 
+
+    const name = document.getElementById("name").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const profileImage = document.getElementById("profile-pic").src;  // Obtener la imagen de perfil actual
+
+
+    // Crear el objeto del perfil del usuario
+    var userProfile = {
+        name,
+        secondName: document.getElementById("secondName").value, // Campo opcional
+        lastName,
+        secondLastName: document.getElementById("secondLastName").value, // Campo opcional
+        email,
+        phone,
+        profileImage  // Guardar la imagen junto con los datos del perfil
+    };
+
+
+ 
     // Limpiar mensajes previos y estilos de error
     [name, lastName, email].forEach(input => {
         input.classList.remove('is-invalid');
@@ -55,19 +89,16 @@ function validateProfile() {
         document.getElementById('email-feedback').innerHTML = 'El correo debe contener un "@" válido.';
         valid = false;
     }
+  // Validar que los campos obligatorios estén llenos
+    if (name.trim() === "" || lastName.trim() === "" || email.trim() === "" || phone.trim() === "") {
+        alert("Por favor, complete todos los campos obligatorios.");
+        return;
+    }
 
     // Si no es válido, no continuar con el guardado
     if (!valid) return;
 
-    // Guardar los datos en el almacenamiento local
-    var userProfile = {
-        name: name.value,
-        secondName: document.getElementById("secondName").value, // Este campo no es obligatorio
-        lastName: lastName.value,
-        secondLastName: document.getElementById("secondLastName").value, // Este campo no es obligatorio
-        email: email.value,
-        phone: document.getElementById("phone").value // Este campo no es obligatorio
-    };
+
 
     // Guardar el perfil del usuario en el almacenamiento local
     localStorage.setItem("userProfile", JSON.stringify(userProfile));
@@ -84,3 +115,11 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+// Guardar el perfil cuando se hace clic en el botón
+document.getElementById("save-profile-btn").addEventListener('click', validateProfile);
+
+// Función para validar el formato del email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
