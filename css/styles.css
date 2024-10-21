@@ -426,6 +426,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+      /* Estilos para el modo oscuro */
+}
+body.dark-mode {
+   background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+}
       
     .bd-placeholder-img {
       font-size: 1.125rem;
