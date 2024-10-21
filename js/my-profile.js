@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (userProfile && userProfile.profileImage) {
             document.getElementById("profile-pic").src = userProfile.profileImage;
         }
-    }
+    
 });
 
 // Evento para cambiar la imagen de perfil
@@ -57,7 +57,7 @@ document.getElementById('image-input').addEventListener('change', function(event
         }
     };
     loadTheme();
-});
+
 
 function validateProfile() {
     // Obtener los valores de los campos
