@@ -36,7 +36,7 @@ document.getElementById('image-input').addEventListener('change', function(event
     }
 });
 
-function saveProfile() {
+function validateProfile() {
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
