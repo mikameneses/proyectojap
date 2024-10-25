@@ -157,5 +157,22 @@ fetch(apiUrl)
             }
     })
 })
+        document.getElementById('buyButton').addEventListener('click', function() {
+       // Ejemplo de cómo obtener la información del producto
+       const product = {
+           name: document.getElementById('product-name').textContent,
+           cost: 100, // Reemplazar con el valor real
+           currency: 'USD', // Moneda real
+           quantity: 1, // Se puede tomar de un input o poner un valor por defecto
+           image: 'main-img.jpg' // Ruta real de la imagen
+       };
+
+       // Guardar en localStorage
+       localStorage.setItem('selectedProduct', JSON.stringify(product));
+
+       // Navegar a cart.html
+       window.location.href = 'cart.html';
+   });
+
 
 });
