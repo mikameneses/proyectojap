@@ -164,8 +164,8 @@ fetch(apiUrl)
            cost: document.getElementById('product-cost').textContent,
            currency: document.getElementById('product-currency').textContent,
            quantity: 1,
-           image: document.getElementById('product-images[0]').textContent
-           subtotal: (quantity * cost)
+           image: document.getElementById('product-images[0]').textContent,
+           parseFloat(document.getElementById('product-cost').textContent)
        };
 
        // Guardar en localStorage
