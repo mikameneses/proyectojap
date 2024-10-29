@@ -19,17 +19,4 @@ document.addEventListener('DOMContentLoaded', function() {
                </div>
          </div>
        `;
-
-       // Añadir event listener para actualizar el subtotal cuando cambie la cantidad
-       document.getElementById('quantity-input').addEventListener('input', function(event) {
-           const newQuantity = parseInt(event.target.value);
-           const newSubtotal = newQuantity * product.cost;
-           document.getElementById('subtotal').textContent = `${newSubtotal} ${product.currency}`;
-           
-           // Actualizar la cantidad y subtotal en localStorage
-           product.quantity = newQuantity;
-           product.subtotal = newSubtotal;
-           localStorage.setItem('selectedProduct', JSON.stringify(product));
-       });
-   }
 });
