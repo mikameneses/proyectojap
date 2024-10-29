@@ -19,4 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
                </div>
          </div>
        `;
+  // Actualizar subtotal cuando se cambie la cantidad
+       document.getElementById('quantity-input').addEventListener('input', function(event) {
+           const newQuantity = parseInt(event.target.value);
+           const newSubtotal = newQuantity * product.cost;
+           document.getElementById('subtotal').textContent = `${newSubtotal}`;
+
+           // Actualizar cantidad y subtotal en localStorage
+           product.quantity = newQuantity;
+           product.subtotal = newSubtotal;
+           localStorage.setItem('selectedProduct', JSON.stringify(product));
+       });
+   } else {
+       // Mostrar mensaje si no hay productos en el carrito
+       document.getElementById('empty-cart-message').textContent = 'No hay productos en el carrito';
+   }
 });
