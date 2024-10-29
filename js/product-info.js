@@ -164,7 +164,7 @@ fetch(apiUrl)
            cost: document.getElementById('product-cost').textContent,
            currency: document.getElementById('product-currency').textContent,
            quantity: 1,
-           image: document.getElementById('product-images[0]').textContent,
+           image: document.getElementById('product-images[0]').src,
            parseFloat(document.getElementById('product-cost').textContent)
        };
 
@@ -175,5 +175,3 @@ fetch(apiUrl)
        window.location.href = 'cart.html';
    });
 
-
-});
