@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="d-flex align-items-center mb-3">
                <img src="${product.image}" alt="${product.name}" class="img-thumbnail me-3" style="width: 100px;">
                <div>
-                   <img src="${product.image}" alt="${product.name}" class="img-thumbnail" style="width: 100px;">
                    <p>Nombre: ${product.name}</p>
                    <p>Costo: ${product.cost} ${product.currency}</p>
                    <p>Cantidad: <input type="number" value="${product.quantity}"></p>
