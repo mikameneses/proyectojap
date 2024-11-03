@@ -157,22 +157,26 @@ fetch(apiUrl)
             }
     })
 })
-        document.getElementById('buyButton').addEventListener('click', function() {
-       // Ejemplo de cómo obtener la información del producto
-       const product = {
-           name: document.getElementById('product-name').textContent,
-           cost: 100, // Reemplazar con el valor real
-           currency: 'USD', // Moneda real
-           quantity: 1, // Se puede tomar de un input o poner un valor por defecto
-           image: 'main-img.jpg' // Ruta real de la imagen
-       };
+       document.getElementById('buyButton').addEventListener('click', function() {
+    // Obtener datos del producto actual desde el DOM o de otros lugares
+    const newProduct = {
+        id: productId,
+        name: document.getElementById('product-name').textContent,
+        cost: producto.cost,  // Usar el cost del JSON
+        currency: producto.currency,  // Usar la currency del JSON
+        quantity: 1,
+        image: producto.images[0]  // Primera imagen del array de imágenes
+    };
 
-       // Guardar en localStorage
-       localStorage.setItem('selectedProduct', JSON.stringify(product));
+    // Manejo de los productos en carrito
+    let cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+    cartProducts.push(newProduct);
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
 
-       // Navegar a cart.html
-       window.location.href = 'cart.html';
-   });
+    // Navegar al carrito
+    window.location.href = 'cart.html';
+});
+
 
 
 });
