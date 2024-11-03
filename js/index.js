@@ -45,4 +45,44 @@ document.addEventListener("DOMContentLoaded", function(){
         event.preventDefault(); // Previene el comportamiento por defecto del enlace
         logout();               // Llama a la función logout
     });
+
+// Inicializa el carrito y carga los productos guardados
+let carrito = [];
+
+// Cargar el carrito al iniciar
+function cargarCarrito() {
+    const carritoGuardado = JSON.parse(localStorage.getItem('carrito'));
+    if (carritoGuardado) {
+        carrito = carritoGuardado;
+        actualizarBadgeCarrito();
+    }
+}
+
+cargarCarrito();
+// Agregar un producto al carrito
+function agregarAlCarrito(producto) {
+    const productoExistente = carrito.find(item => item.id === producto.id);
+    
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        producto.cantidad = 1;
+        carrito.push(producto);
+    }
+
+    actualizarBadgeCarrito();
+    guardarCarrito();
+}
+// Guardar el carrito en localStorage
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+// Actualizar el badge con la cantidad total de productos
+function actualizarBadgeCarrito() {
+    const badge = document.getElementById('carrito-badge');
+    const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
+    badge.innerText = cantidadTotal;
+}
+
 }); 
