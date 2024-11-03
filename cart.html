@@ -9,45 +9,39 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles-cart.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+      <div class="collapse navbar-collapse navbar fixed-top bg-body-tertiary container-fluid" id="navbarNav">
+        <ul class="navbar-nav w-100  justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html" title="Inicio">
+              <img src="img/logoecommerce.jpeg" alt="Logo e-commerce"></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+          <div class="justify-content-end d-flex">
+          <li class="nav-item1 dropdown" id="infoUsuarioContainer">
+            <a class="nav-link dropdown-toggle" href="#" id="infoUsuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">  <!--El atributo data-bs-toggle lo utilizamos para indicar que es un menú desplegable de bootstrap-->
+              Hola, Usuario! <!-- Texto predeterminado que se mostrará antes de que se cargue el nombre con el que ingresó el usuario -->
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="infoUsuario"></ul> <!-- Contenedor del menú desplegable que se llenará dinámicamente con enlaces -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    class="container my-4">
-    <h2>Carrito de Compras</h2>
-    <div id="cart-container" class="my-3">
-     
-    </div>
-    <div class="total text-end me-5">
-      Total: <span id="total-price">0</span> UYU 
-     
-    </div>
-    <div class="total text-end me-5">
-     <span id="total-price">0</span> USD
-     
+    <div class="container">
+      <h2>Carrito de compras</h2>
+    <div id="cart-items"></div>
+    <button class="continue-btn">Continuar compra</button>
     </div>
   </main>
   <footer class="text-muted">
@@ -55,7 +49,7 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">
@@ -69,6 +63,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/user.js"></script>
 </body>
 
 </html>
