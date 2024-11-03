@@ -105,33 +105,6 @@
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
   
-  <!-- HTML en cart.html - Contenedor para mostrar los productos -->
-<div id="contenedor-carrito"></div>
-
-<script>
-// Mostrar productos en el carrito
-function mostrarCarrito() {
-    const contenedorCarrito = document.getElementById('contenedor-carrito');
-    contenedorCarrito.innerHTML = '';
-
-    carrito.forEach(producto => {
-        const itemHTML = `
-            <div class="producto">
-                <h3>${producto.nombre}</h3>
-                <p>Precio: $${producto.precio}</p>
-                <p>Cantidad: ${producto.cantidad}</p>
-            </div>
-        `;
-        contenedorCarrito.innerHTML += itemHTML;
-    });
-}
-
-// Cargar y mostrar el carrito al iniciar cart.html
-cargarCarrito();
-mostrarCarrito();
-</script>
-<button onclick="agregarAlCarrito({ id: 1, nombre: 'Producto 1', precio: 100 })">Añadir al carrito</button>
-
 </body>
 
 </html>
