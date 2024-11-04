@@ -2,18 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const productId = localStorage.getItem('id');
 
     if (productId) {
-        const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
+        const apiUrl = ⁠ 'https://japceibal.github.io/emercado-api/products/${productId}.json' ⁠;
 
         fetch(apiUrl)
             .then(response => response.json())
             .then(producto => {
                 document.getElementById('product-name').textContent = producto.name;
-                document.getElementById('category').textContent = `Categoría: ${producto.category}`;
-                document.getElementById('description').textContent = `Descripción: ${producto.description}`;
-                document.getElementById('sold').textContent = `Vendidos: ${producto.soldCount}`;
-
-                const mainImage = document.querySelector('.main-image img');
-                mainImage.src = producto.images[0];
+document.getElementById('category').textContent = ⁠ Categoría: ${producto.category} ⁠;
+                document.getElementById('description').textContent = producto.description;
+                document.getElementById('sold-count').textContent = ⁠ Vendidos: ${producto.soldCount} ⁠;
+                document.getElementById('main-img').src = producto.images[0];
 
                 const buyButton = document.getElementById('buyButton');
                 buyButton.addEventListener('click', function() {
@@ -34,4 +32,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Producto no encontrado en localStorage');
     }
 });
- ⁠
