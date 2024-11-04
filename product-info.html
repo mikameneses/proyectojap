@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -35,55 +35,29 @@
     </div>
   </nav>
   <main class="container my-4">
-    <div class="row">  
+    <div class="row">
       <div class="col-3 col-sm-2">
         <div class="product-images">
-          <img src="thumb1.jpg" class="img-fluid mb-2" alt="Imagen Miniatura 1">
-          <img src="thumb2.jpg" class="img-fluid mb-2" alt="Imagen Miniatura 2">
-          <img src="thumb3.jpg" class="img-fluid" alt="Imagen Miniatura 3">
+          <img id="thumb1" src="thumb1.jpg" class="img-fluid mb-2" alt="Imagen Miniatura 1">
+          <img id="thumb2" src="thumb2.jpg" class="img-fluid mb-2" alt="Imagen Miniatura 2">
+          <img id="thumb3" src="thumb3.jpg" class="img-fluid" alt="Imagen Miniatura 3">
         </div>
       </div>
       <div class="col-9 col-sm-10">
         <div class="d-flex">
           <div class="main-image mr-4">
-            <img src="main-img.jpg" class="img-fluid" alt="Imagen Principal">
+            <img id="main-img" src="main-img.jpg" class="img-fluid" alt="Imagen Principal">
           </div>
           <div class="product-details">
             <h2 id="product-name">Nombre del Producto</h2>
-            <p id="category">Categoría</p>
+            <p id="category">Categoría: </p>
             <p id="description">Descripción del producto</p>
-            <p id="sold">Vendidos: <span id="sold-count">0</span></p>
+            <p id="sold-count">Vendidos: 0</p>
             <button id="buyButton" class="btn btn-success">Comprar</button>
-          </div>
-          <br>
-          <div id="related-products" class="container">
-            <h3>Productos Relacionados</h3>
-            <div id="related-products-container" class="row"></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="rating">
-      <form id="ratingForm">
-        <div class="rating-content">
-          <div class="rating-group-left">
-            <p class="rating-content">Añade una calificación</p>
-            <input type="text" class="rating-control" id="comment-rating" placeholder="Escribir comentario..." required>
-          </div>
-          <div class="ratingStar">
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-            <i class="bi bi-star-fill star"></i>
-          </div>
-        </div>
-        <input class="btn btn-primary" type="submit" value="Enviar">
-      </form>
-    </div>
-
-    <div id="comments-container"></div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -93,18 +67,9 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
 </body>
 
 </html>
-
