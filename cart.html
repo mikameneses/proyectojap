@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 
 <head>
@@ -29,25 +29,33 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-          </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <span id="userDisplay"> </span>
+            </button> 
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <a href="cart.html" class="btn btn-primary">
+                  Mi carrito <span id="badge-carrito" class="badge text-bg-secondary">0</span>
+                </a>
+            </li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" id="logoutLink" href="#">Cerrar sesión</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    class="container my-4">
-    <h2>Carrito de Compras</h2>
-    <div id="cart-container" class="my-3">
-     
-    </div>
-    <div class="total text-end me-5">
-      Total: <span id="total-price">0</span> UYU 
-     
-    </div>
-    <div class="total text-end me-5">
-     <span id="total-price">0</span> USD
-     
+    <div class="container">
+      <h2>Carrito de compras</h2>
+    <div id="cart-items"></div>
+    <div id="totales-container">
+      <p id="total-uyu">Total en UYU: </p>
+      <p id="total-usd">Total en USD: </p>
+  </div>
+    <button class="continue-btn">Continuar compra</button>
     </div>
   </main>
   <footer class="text-muted">
@@ -69,6 +77,5 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/product-info.js"></script>
 </body>
-
-</html>
