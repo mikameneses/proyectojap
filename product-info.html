@@ -31,6 +31,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <span id="userDisplay"> </span>
+            </button> 
+            <ul class="dropdown-menu">
+              <li class="nav-item">
+                <a href="cart.html" class="btn btn-primary">
+                  Mi carrito <span id="badge-carrito" class="badge text-bg-secondary">0</span>
+                </a>
+            </li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" id="logoutLink" href="#">Cerrar sesión</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
@@ -49,16 +63,24 @@
     <div class="col-9 col-sm-10">
         <div class="d-flex">
             <!-- Imagen principal -->
-            <div class="main-image mr-4">
-                <img src="main-img.jpg" class="img-fluid" alt="Imagen Principal">
+            <div class="container text-center">
+              <img id="main-image" alt="Imagen principal" class="img-fluid">
             </div>
             <!-- Detalles del producto -->
             <div class="product-details">
                 <h2 id="product-name">Nombre del Producto</h2>
                 <p id="category">Categoría</p>
                 <p id="description">Descripción del producto</p>
+                <h7>Vendidos:</h7>
                 <p id="sold">Vendidos: <span id="sold-count">0</span></p>
-                 <button id="buyButton" class="btn btn-success">Comprar</button>
+                 <h7>Precio:</h7>
+                <p id="price">Precio:</p>
+                <h7>Moneda:</h7>
+                <p id="product-currency">Moneda:</p>
+
+
+                 <button id="buyButton" class="btn btn-success boton">Comprar</button> 
+              
 
             </div>
           <br>
@@ -73,7 +95,7 @@
 
 
  <!-- Calificacion-->
- <div class="rating">
+ <div class="rating" id="rating">
   <form id="ratingForm">
     <div class="rating-content">
       <div class="rating-group-left">
@@ -114,6 +136,9 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>
+
