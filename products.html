@@ -30,9 +30,20 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-             <a class="nav-link" <span id="userDisplay"> </span></a>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <span id="userDisplay"> </span>
+          </button> 
+          <ul class="dropdown-menu">
+            <li class="nav-item">
+              <a href="cart.html" class="btn btn-primary">
+                Mi carrito <span id="badge-carrito" class="badge text-bg-secondary">0</span>
+              </a>
           </li>
+            <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+            <li><a class="dropdown-item" id="logoutLink" href="#">Cerrar sesión</a></li>
+          </ul>
+        </div>
         </ul>
       </div>
     </div>
@@ -106,6 +117,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>
