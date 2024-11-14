@@ -43,7 +43,7 @@ function renderizarCarrito() {
                         <span class="quantity">${quantity}</span>
                         <button class="quantity-btn" onclick="actualizarCantidad('${product.name}', 1)">+</button>
                     </div>
-                    <p class="subtotal">Subtotal: ${product.currency} ${subtotal}</p>
+                    <p class="subtotal-uyu">Subtotal: ${product.currency} ${subtotal}</p>
                     <a href="#" class="remove-link" onclick="eliminarProducto('${product.name}')">Eliminar</a>
                 </div>
             `;
@@ -62,6 +62,26 @@ function renderizarCarrito() {
 function calcularSubtotal(price, quantity) {
     return price * quantity;
 }
+
+function actualizarTotales() {
+
+    const subtotalUYUElement = document.getElementById('subtotal-uyu');
+    const subtotalUSDElement = document.getElementById('subtotal-usd');
+
+    if (subtotalUYUElement) {
+        subtotalUYUElement.innerHTML = `Subotal en UYU: <strong>${totales.subtotalUYU}</strong>`;
+
+    } else {
+        console.error("Elemento 'subtotal-uyu' no encontrado en el DOM.");
+    }
+
+    if (subtotalUSDElement) {
+        totalUSDElement.innerHTML = `Subotal en USD: <strong>${totales.totalUSD}</strong>`;
+    } else {
+        console.error("Elemento 'total-usd' no encontrado en el DOM.");
+    }
+
+    }
 
 // Función para actualizar la cantidad de un producto
 function actualizarCantidad(nombreProducto, cambio) {
@@ -139,4 +159,110 @@ function actualizarTotales() {
     }
 
     }
+
+// Variables para el cálculo de costos
+let subtotal = 0;  // Subtotal inicial de los productos
+let shippingCost = 0;
+let total = 0;
+
+function calcularTotalesPorMoneda() {
+    const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
+    
+    let totalUYU = 0;
+    let totalUSD = 0;
+
+    products.forEach(product => {
+        const price = Number(product.price) || 0;
+        const quantity = Number(product.quantity) || 1;
+        const subtotal = price * quantity;
+
+        if (product.currency === 'UYU') {
+            totalUYU += subtotal;
+        } else if (product.currency === 'USD') {
+            totalUSD += subtotal;
+        }
+    });
+
+    return { totalUYU, totalUSD };
+}
+
+// Función para calcular el subtotal de los productos en el carrito
+function calcularSubtotal() {
+  const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
+  subtotal = products.reduce((acc, product) => {
+    const price = Number(product.price) || 0;
+    const quantity = Number(product.quantity) || 1;
+    return acc + (price * quantity);
+  }, 0);
+}
+
+// Función para actualizar los costos
+function updateCosts() {
+  // Recalcular el subtotal antes de calcular el costo total
+  calcularSubtotal();
+
+  // Cálculo del costo de envío según opción seleccionada
+  const shippingPercentage = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
+  shippingCost = subtotal * shippingPercentage;
+  total = subtotal + shippingCost;
+
+  // Actualizar el DOM con los valores de costos
+  document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.getElementById("costo-envio").innerText = `Costo de envío: $${shippingCost.toFixed(2)}`;
+  document.getElementById("total").innerText = `Total: $${total.toFixed(2)}`;
+}
+
+// Eventos para actualizar costos cada vez que se selecciona un tipo de envío
+document.querySelectorAll('input[name="shipping"]').forEach(option => {
+  option.addEventListener('change', updateCosts);
+});
+
+// Función para validar y finalizar compra
+function finalizarCompra() {
+  // Validaciones de campos
+  const departamento = document.getElementById("departamento").value;
+  const localidad = document.getElementById("localidad").value;
+  const calle = document.getElementById("calle").value;
+  const numero = document.getElementById("numero").value;
+  const esquina = document.getElementById("esquina").value;
+  const paymentMethod = document.querySelector('input[name="payment"]:checked');
+
+  if (!departamento || !localidad || !calle || !numero || !esquina) {
+    alert("Por favor, completa todos los campos de la dirección.");
+    return;
+  }
+
+  if (!document.querySelector('input[name="shipping"]:checked')) {
+    alert("Selecciona un tipo de envío.");
+    return;
+  }
+
+  if (!paymentMethod) {
+    alert("Selecciona una forma de pago.");
+    return;
+  }
+
+  alert("¡Compra realizada con éxito!");
+}
+
+// Evento para finalizar compra
+document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
+
+// Llamar a updateCosts al cargar la página para actualizar el subtotal inicial
+document.addEventListener("DOMContentLoaded", updateCosts);
+
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Selecciona el botón en la pestaña Carrito
+    const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
+
+    // Añade un event listener para hacer el cambio de pestaña al hacer clic
+    botonAvanzar.addEventListener('click', function () {
+      const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
+      shippingTab.show();
+    });
+  });
+
+
 
