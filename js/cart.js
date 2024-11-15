@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrito();
     actualizarTotales(); // Inicializar los totales
     actualizarBadgeCarrito(); // Llamada para que el badge refleje el estado inicial
+    const formCart = JSON.parse(localStorage.getItem("formCart"));
 });
 
 function renderizarCarrito() {
@@ -139,4 +140,143 @@ function actualizarTotales() {
     }
 
     }
+// Cálculo del costo de envío según opción seleccionada
+const shippingPercentage = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
+shippingCost = subtotal * shippingPercentage;
+total = calcularSubtotal + shippingCost;
 
+// Actualizar el DOM con los valores de costos
+document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+document.getElementById("costo-envio").innerText = `Costo de envío: $${shippingCost.toFixed(2)}`;
+document.getElementById("total").innerText = `Total: $${total.toFixed(2)}`;
+
+
+// Eventos para actualizar costos cada vez que se selecciona un tipo de envío
+document.querySelectorAll('input[name="shipping"]').forEach(option => {
+option.addEventListener('change', updateCosts);
+});
+
+// Función para validar y finalizar compra
+function finalizarCompra() {
+// Validaciones de campos
+const departamento = document.getElementById("departamento").value;
+const localidad = document.getElementById("localidad").value;
+const calle = document.getElementById("calle").value;
+const numero = document.getElementById("numero").value;
+const esquina = document.getElementById("esquina").value;
+const paymentMethod = document.querySelector('input[name="payment"]:checked');
+
+// Limpiar mensajes previos y estilos de error
+[departamento, localidad, calle, numero, esquina].forEach(input => {
+  input.classList.remove('is-invalid');
+  document.getElementById(`${input.id}-feedback`).innerHTML = '';
+});
+
+let valid = true;
+
+// Validar que los campos obligatorios no estén vacíos
+if (departamento.value.trim() === "") {
+  departamento.classList.add('is-invalid');
+  document.getElementById('departamento-feedback').innerHTML = 'El departamento es obligatorio.';
+  valid = false;
+}
+
+
+
+if (localidad.value.trim() === "") {
+  localidad.classList.add('is-invalid');
+  document.getElementById('localidad-feedback').innerHTML = 'La localidad es obligatoria.';
+  valid = false;
+}
+
+if (calle.value.trim() === "") {
+  calle.classList.add('is-invalid');
+  document.getElementById('calle-feedback').innerHTML = 'La calle es obligatoria.';
+  valid = false;
+}
+
+if (numero.value.trim() === "") {
+  numero.classList.add('is-invalid');
+  document.getElementById('numero-feedback').innerHTML = 'El número es obligatorio.';
+  valid = false;
+}
+
+if (esquina.value.trim() === "") {
+  esquina.classList.add('is-invalid');
+  document.getElementById('esquina-feedback').innerHTML = 'La esquina es obligatoria.';
+  valid = false;
+}
+
+// Si no es válido, no continuar con el guardado
+if (!valid) return;
+
+// Guardar los datos en el almacenamiento local
+var formCart = {
+  departamento: departamento.value,
+  localidad: localidad.value,
+  calle: calle.value,
+  numero: numero.value,
+  esquina: esquina.value,
+};
+
+// Guardar el formulario en el almacenamiento local
+localStorage.setItem("formCart", JSON.stringify(formCart));
+
+if (!departamento || !localidad || !calle || !numero || !esquina) {
+  alert("Por favor, completa todos los campos de la dirección.");
+  return;
+}
+
+if (!document.querySelector('input[name="shipping"]:checked')) {
+  alert("Selecciona un tipo de envío.");
+  return;
+}
+
+if (!paymentMethod) {
+  alert("Selecciona una forma de pago.");
+  return;
+}
+
+alert("¡Compra realizada con éxito!");
+}
+
+// Evento para finalizar compra
+document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
+
+// Llamar a updateCosts al cargar la página para actualizar el subtotal inicial
+document.addEventListener("DOMContentLoaded", updateCosts);
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Selecciona el botón en la pestaña Carrito
+  const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
+
+  // Añade un event listener para hacer el cambio de pestaña al hacer clic
+  botonAvanzar.addEventListener('click', function () {
+    const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
+    shippingTab.show();
+  });
+});
+
+document.getElementById("saveBankTransfer").addEventListener("click", function () {
+  const form = document.getElementById("bankTransferForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Transferencia Bancaria.");
+  } else {
+    alert("Información de transferencia guardada correctamente.");
+    const bankModal = bootstrap.Modal.getInstance(document.getElementById("bankTransferModal"));
+    bankModal.hide();
+  }
+});
+
+document.getElementById("saveCreditCard").addEventListener("click", function () {
+  const form = document.getElementById("creditCardForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Tarjeta de Crédito.");
+  } else {
+    alert("Información de tarjeta guardada correctamente.");
+    const creditModal = bootstrap.Modal.getInstance(document.getElementById("creditCardModal"));
+    creditModal.hide();
+  }
+});
