@@ -215,10 +215,6 @@ function finalizarCompra() {
         valid = false;
     }
 
-    if (!paymentMethod) {
-        alert("Selecciona una forma de pago.");
-        valid = false;
-    }
 
     if (!valid) return;
 
