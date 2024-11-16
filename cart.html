@@ -49,7 +49,7 @@
   </nav>
 
     <div class="container my-4">
-      <!-- Tabs with dropdown for navigation -->
+     
       <ul class="nav nav-tabs" id="cartTabs" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="cart-tab" data-bs-toggle="tab" data-bs-target="#cart" type="button" role="tab" aria-controls="cart" aria-selected="true">
@@ -57,25 +57,21 @@
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">
-            Envío y Facturación
-          </button>
+          <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Datos de Envío y Facturación</button>
         </li>
+      
       </ul>
     
-      <!-- Tab content -->
       <div class="tab-content" id="cartTabContent">
-        <!-- Primera pestaña: Carrito de compras y subtotal -->
+        <!-- Primera pestaña-->
         <div class="tab-pane fade show active" id="cart" role="tabpanel" aria-labelledby="cart-tab">
           <div class="container py-4">
             <h2>Carrito de Compras</h2>
-    
-            <!-- Items del carrito -->
+           
             <div id="cart-items"></div>
-    
-            <!-- Sección de Totales -->
+            
             <div class="container">
-              <h2>Carrito de compras</h2>
+              <h3>TOTALES</h3>
             <div id="cart-items"></div>
             <div id="totales-container">
               <p id="total-uyu">Total en UYU: </p>
@@ -83,7 +79,7 @@
           </div>
             </div>
             
-           <!-- Botón para avanzar a la siguiente sección en la pestaña Carrito -->
+           
     <button class="btn btn-primary mt-3" data-bs-toggle="tab" data-bs-target="#shipping" type="button">
       Datos de Envío y Facturación
     </button>
@@ -91,7 +87,7 @@
           </div>
         </div>
     
-        <!-- Segunda pestaña: Dirección de envío y forma de pago -->
+        <!-- Segunda pestaña -->
         <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
           <div class="container py-4">
             <h3>Dirección de Envío</h3>
@@ -155,7 +151,7 @@
                 </div>
     
                 <div class="shipping-options my-4">
-                  <h5>Tipo de envío</h5>
+                  <h3>Tipo de envío</h3>
                   <div>
                     <input type="radio" id="premium" name="shipping" value="0.15" onclick="updateCosts()">
                     <label for="premium">Premium 2 a 5 días (15% del valor total de la compra)</label>
@@ -169,10 +165,15 @@
                     <label for="standard">Standard 12 a 15 días (5% del valor total de la compra)</label>
                   </div>
                 </div>
-              </div>
-            
-    
-            <!-- Sección de Forma de Pago -->
+                <div 
+                <div>
+                  <h3> Costo </h3>
+                  <p id="costo-envio-uyu">Costo de envío en $: </p>
+                  <p id="costo-envio-usd">Costo de envío en USD: </p>
+                  <p id="total-con-envio-uyu">Total con envío en $: </p>
+                  <p id="total-con-envio-usd">Total con envío en USD: </p>
+                </div>
+                 
             <h3 class="mt-4">Forma de Pago</h3>
             <div>
               <div class="form-check d-flex ">
@@ -204,15 +205,18 @@
                 </label>
               </div>
             </div>
-            <!-- Botón para finalizar la compra -->
+           
             <div>
               <button id="finalizar-compra" class="btn btn-success mt-3">Finalizar Compra</button>
             </div>
           </div>
         </div>
-      
+              </div>
+
+              </div>
+            
     </div>
-            <!-- Modal para Transferencia Bancaria -->
+            <!--Transferencia Bancaria -->
     <div class="modal fade" id="bankTransferModal" tabindex="-1" aria-labelledby="bankTransferModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -245,7 +249,7 @@
     </div>
     
     
-    <!-- Modal para Tarjeta de Crédito -->
+    <!-- Tarjeta de Crédito -->
     <div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -280,9 +284,6 @@
         </div>
       </div>
     </div>
-            
-    
-    
       <footer class="text-muted">
         <div class="container">
           <p class="float-end">
