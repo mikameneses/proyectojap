@@ -1,4 +1,3 @@
-<!DOCTYPE html> 
 <html lang="es">
 
 <head>
@@ -47,35 +46,261 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <h2>Carrito de compras</h2>
-    <div id="cart-items"></div>
-    <div id="totales-container">
-      <p id="total-uyu">Total en UYU: </p>
-      <p id="total-usd">Total en USD: </p>
-  </div>
-    <button class="continue-btn">Continuar compra</button>
+
+    <div class="container my-4">
+     
+      <ul class="nav nav-tabs" id="cartTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="cart-tab" data-bs-toggle="tab" data-bs-target="#cart" type="button" role="tab" aria-controls="cart" aria-selected="true">
+            Carrito
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Datos de Envío y Facturación</button>
+        </li>
+      
+      </ul>
+    
+      <div class="tab-content" id="cartTabContent">
+        <!-- Primera pestaña-->
+        <div class="tab-pane fade show active" id="cart" role="tabpanel" aria-labelledby="cart-tab">
+          <div class="container py-4">
+            <h2>Carrito de Compras</h2>
+           
+            <div id="cart-items"></div>
+            
+            <div class="container">
+              <h3>TOTALES</h3>
+            <div id="cart-items"></div>
+            <div id="totales-container">
+              <p id="total-uyu">Total en UYU: </p>
+              <p id="total-usd">Total en USD: </p>
+          </div>
+            </div>
+            
+           
+    <button class="btn btn-primary mt-3" data-bs-toggle="tab" data-bs-target="#shipping" type="button">
+      Datos de Envío y Facturación
+    </button>
+    
+          </div>
+        </div>
+    
+        <!-- Segunda pestaña -->
+        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+          <div class="container py-4">
+            <h3>Dirección de Envío</h3>
+            <form id="shipping-address">
+              
+              <div class="col-sm-6">Departamento:
+                
+                <select id="departamento" name="departamento" required>
+                    <option value="">Por favor, selecciona un departamento</option>
+                    <option value="Artigas">Artigas</option>
+                    <option value="Canelones">Canelones</option>
+                    <option value="Cerro Largo">Cerro Largo</option>
+                    <option value="Colonia">Colonia</option>
+                    <option value="Durazno">Durazno</option>
+                    <option value="Flores">Flores</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Lavalleja">Lavalleja</option>
+                    <option value="Maldonado">Maldonado</option>
+                    <option value="Montevideo">Montevideo</option>
+                    <option value="Paysandú">Paysandú</option>
+                    <option value="Río Negro">Río Negro</option>
+                    <option value="Rivera">Rivera</option>
+                    <option value="Rocha">Rocha</option>
+                    <option value="Salto">Salto</option>
+                    <option value="San José">San José</option>
+                    <option value="Soriano">Soriano</option>
+                    <option value="Tacuarembó">Tacuarembó</option>
+                    <option value="Treinta y Tres">Treinta y Tres</option>
+                </select>
+              </div>
+              <div class="row mb-3 text-start">
+                <label for="localidad" class="col-sm-2 col-form-label">Localidad:</label>
+                <div class="col-sm-4 text-start">
+                    <input type="text" class="form-control" id="localidad" required />
+                    <div class="invalid-feedback" id="name-feedback"></div>
+                </div>
+            </div>
+              <div class="row mb-3 text-start">
+                <label for="calle" class="col-sm-2 col-form-label">Calle:</label>
+                <div class="col-sm-4 text-start">
+                    <input type="text" class="form-control" id="calle" required />
+                    <div class="invalid-feedback" id="name-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3 text-start">
+                <label for="numero" class="col-sm-2 col-form-label">Número:</label>
+                <div class="col-sm-4 text-start">
+                    <input type="text" class="form-control" id="numero" required />
+                    <div class="invalid-feedback" id="name-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3 text-start">
+                <label for="esquina" class="col-sm-2 col-form-label">Esquina:</label>
+                <div class="col-sm-4 text-start">
+                    <input type="text" class="form-control" id="esquina" required />
+                    <div class="invalid-feedback" id="name-feedback"></div>
+                </div>
+              </div>
+            </form>
+    
+                </div>
+    
+                <div class="shipping-options my-4">
+                  <h3>Tipo de envío</h3>
+                  <div>
+                    <input type="radio" id="premium" name="shipping" value="0.15" onclick="updateCosts()">
+                    <label for="premium">Premium 2 a 5 días (15% del valor total de la compra)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="express" name="shipping" value="0.07" onclick="updateCosts()">
+                    <label for="express">Express 5 a 8 días (7% del valor total de la compra)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="standard" name="shipping" value="0.05" onclick="updateCosts()">
+                    <label for="standard">Standard 12 a 15 días (5% del valor total de la compra)</label>
+                  </div>
+                </div>
+                <div 
+                <div>
+                  <h3> Costo </h3>
+                  <p id="costo-envio-uyu">Costo de envío en $: </p>
+                  <p id="costo-envio-usd">Costo de envío en USD: </p>
+                  <p id="total-con-envio-uyu">Total con envío en $: </p>
+                  <p id="total-con-envio-usd">Total con envío en USD: </p>
+                </div>
+                 
+            <h3 class="mt-4">Forma de Pago</h3>
+            <div>
+              <div class="form-check d-flex ">
+                <input
+                  class="form-check-input me-2"
+                  type="radio"
+                  name="paymentMethod"
+                  id="bankTransferOption"
+                  value="bankTransfer"
+                  data-bs-toggle="modal"
+                  data-bs-target="#bankTransferModal"
+                >
+                <label class="form-check-label" for="bankTransferOption">
+                  Transferencia Bancaria
+                </label>
+              </div>
+              <div class="form-check d-flex ">
+                <input
+                  class="form-check-input me-2"
+                  type="radio"
+                  name="paymentMethod"
+                  id="creditCardOption"
+                  value="creditCard"
+                  data-bs-toggle="modal"
+                  data-bs-target="#creditCardModal"
+                >
+                <label class="form-check-label" for="creditCardOption">
+                  Tarjeta de Crédito
+                </label>
+              </div>
+            </div>
+           
+            <div>
+              <button id="finalizar-compra" class="btn btn-success mt-3">Finalizar Compra</button>
+            </div>
+          </div>
+        </div>
+              </div>
+
+              </div>
+            
     </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+            <!--Transferencia Bancaria -->
+    <div class="modal fade" id="bankTransferModal" tabindex="-1" aria-labelledby="bankTransferModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bankTransferModalLabel">Transferencia Bancaria</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="bankTransferForm">
+              <div class="mb-3">
+                <label for="accountNumber" class="form-label">Número de Cuenta</label>
+                <input type="text" class="form-control" id="accountNumber" required>
+              </div>
+              <div class="mb-3">
+                <label for="bankName" class="form-label">Nombre del Banco</label>
+                <input type="text" class="form-control" id="bankName" required>
+              </div>
+              <div class="mb-3">
+                <label for="holderName" class="form-label">Nombre del Titular</label>
+                <input type="text" class="form-control" id="holderName" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="saveBankTransfer">Guardar</button>
+          </div>
     </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/product-info.js"></script>
-</body>
+    </div>
+    
+    
+    <!-- Tarjeta de Crédito -->
+    <div class="modal fade" id="creditCardModal" tabindex="-1" aria-labelledby="creditCardModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="creditCardModalLabel">Tarjeta de Crédito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="creditCardForm">
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                <input type="text" class="form-control" id="cardNumber" required>
+              </div>
+              <div class="mb-3">
+                <label for="cardName" class="form-label">Nombre en la Tarjeta</label>
+                <input type="text" class="form-control" id="cardName" required>
+              </div>
+              <div class="mb-3">
+                <label for="expiryDate" class="form-label">Fecha de Vencimiento</label>
+                <input type="month" class="form-control" id="expiryDate" required>
+              </div>
+              <div class="mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" maxlength="3" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="saveCreditCard">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <footer class="text-muted">
+        <div class="container">
+          <p class="float-end">
+            <a href="#">Volver arriba</a>
+          </p>
+          <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+        </div>
+      </footer>
+      <div id="spinner-wrapper">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/init.js"></script>
+      <script src="js/cart.js"></script>
+      <script src="js/product-info.js"></script>
+    </body>
