@@ -1,34 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
     renderizarCarrito();
-    actualizarTotales(); // Inicializar los totales
-    actualizarBadgeCarrito(); // Llamada para que el badge refleje el estado inicial
+    actualizarTotales(); 
+    actualizarBadgeCarrito();
+    const formCart = JSON.parse(localStorage.getItem("formCart"));
 });
 
 function renderizarCarrito() {
     const cartContainer = document.getElementById("cart-items");
 
-    // Verificar si el contenedor existe
+    
     if (!cartContainer) {
         console.error("Elemento con ID 'cart-items' no encontrado.");
         return;
         actualizarBadgeCarrito();
     }
-   
 
-    // Obtener los productos del carrito desde el localStorage
     const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
 
-    // Limpiar el contenido antes de renderizar
     cartContainer.innerHTML = ""; 
 
-    // Verificar si hay productos en el carrito
     if (products.length === 0) {
-        // Si no hay productos, mostrar un mensaje de carrito vacío
+       
         cartContainer.innerHTML = "<p>No hay ningún producto en el carrito.</p>";
     } else {
         products.forEach(product => {
             const price = Number(product.price) || 0;
-            const quantity = Number(product.quantity) || 1; // Cantidad predeterminada
+            const quantity = Number(product.quantity) || 1; 
             const subtotal = calcularSubtotal(price, quantity);
             const productElement = document.createElement("div");
             productElement.classList.add("cart-item");
@@ -52,18 +49,17 @@ function renderizarCarrito() {
         });
     }
 
-    // Actualizar el badge después de renderizar
+
     actualizarBadgeCarrito();
-    // Actualizar los totales después de renderizar
     actualizarTotales();
 }
 
-// Función para calcular el subtotal de un producto
+
 function calcularSubtotal(price, quantity) {
     return price * quantity;
 }
 
-// Función para actualizar la cantidad de un producto
+
 function actualizarCantidad(nombreProducto, cambio) {
     const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
     const product = products.find(p => p.name === nombreProducto);
@@ -76,7 +72,7 @@ function actualizarCantidad(nombreProducto, cambio) {
     }
 }
 
-// Función para eliminar un producto del carrito
+
 function eliminarProducto(nombreProducto) {
     const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
     const updatedProducts = products.filter(p => p.name !== nombreProducto);
@@ -87,14 +83,14 @@ function eliminarProducto(nombreProducto) {
 }
 
 
-// Función para actualizar el badge del carrito
+
 function actualizarBadgeCarrito() {
     const products = JSON.parse(localStorage.getItem("selectedProducts")) || [];
     const totalProducts = products.reduce((total, product) => total + (product.quantity), 0);
     
     const badge = document.getElementById("badge-carrito"); 
     if (badge) {
-        badge.innerText = totalProducts; // Actualizar el contenido del badge
+        badge.innerText = totalProducts; 
     }
 }
 
@@ -139,4 +135,122 @@ function actualizarTotales() {
     }
 
     }
+    function updateCosts() {
+      const shippingPercentage = parseFloat(document.querySelector('input[name="shipping"]:checked')?.value || 0);
+      const { totalUYU, totalUSD } = calcularTotalesPorMoneda();
+  
+      
+      const shippingCostUYU = totalUYU * shippingPercentage;
+      const shippingCostUSD = totalUSD * shippingPercentage;
+  
+  
+      const totalConEnvioUYU = totalUYU + shippingCostUYU;
+      const totalConEnvioUSD = totalUSD + shippingCostUSD;
+  
+   
+      document.getElementById("costo-envio-uyu").innerText = `Costo de envío en $: ${shippingCostUYU.toFixed(2)}`;
+      document.getElementById("costo-envio-usd").innerText = `Costo de envío en USD: ${shippingCostUSD.toFixed(2)}`;
+      document.getElementById("total-con-envio-uyu").innerText = `Total con envío en $: ${totalConEnvioUYU.toFixed(2)}`;
+      document.getElementById("total-con-envio-usd").innerText = `Total con envío en USD: ${totalConEnvioUSD.toFixed(2)}`;
+  }
+  
+  document.addEventListener("DOMContentLoaded", updateCosts);
+     
+ 
 
+document.querySelectorAll('input[name="shipping"]').forEach(option => {
+option.addEventListener('change', updateCosts);
+});
+
+
+// Función para validar y finalizar compra
+function finalizarCompra() {
+    const departamento = document.getElementById("departamento");
+    const localidad = document.getElementById("localidad");
+    const calle = document.getElementById("calle");
+    const numero = document.getElementById("numero");
+    const esquina = document.getElementById("esquina");
+    const paymentMethod = document.querySelector('input[name="payment"]:checked');
+
+    let valid = true;
+
+    // Validar que los campos obligatorios no estén vacíos
+    if (departamento.value.trim() === "") {
+        departamento.classList.add('is-invalid');
+        valid = false;
+    } else {
+        departamento.classList.remove('is-invalid');
+    }
+
+    if (localidad.value.trim() === "") {
+        localidad.classList.add('is-invalid');
+        valid = false;
+    } else {
+        localidad.classList.remove('is-invalid');
+    }
+
+    if (calle.value.trim() === "") {
+        calle.classList.add('is-invalid');
+        valid = false;
+    } else {
+        calle.classList.remove('is-invalid');
+    }
+
+    if (numero.value.trim() === "") {
+        numero.classList.add('is-invalid');
+        valid = false;
+    } else {
+        numero.classList.remove('is-invalid');
+    }
+
+    if (esquina.value.trim() === "") {
+        esquina.classList.add('is-invalid');
+        valid = false;
+    } else {
+        esquina.classList.remove('is-invalid');
+    }
+
+    if (!document.querySelector('input[name="shipping"]:checked')) {
+        alert("Selecciona un tipo de envío.");
+        valid = false;
+    }
+
+
+    if (!valid) return;
+
+    alert("¡Compra realizada con éxito!");
+}
+
+document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
+document.addEventListener("DOMContentLoaded", updateCosts);
+document.addEventListener('DOMContentLoaded', function () {
+  
+  const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
+
+  botonAvanzar.addEventListener('click', function () {
+    const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
+    shippingTab.show();
+  });
+});
+
+document.getElementById("saveBankTransfer").addEventListener("click", function () {
+  const form = document.getElementById("bankTransferForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Transferencia Bancaria.");
+  } else {
+    alert("Información de transferencia guardada correctamente.");
+    const bankModal = bootstrap.Modal.getInstance(document.getElementById("bankTransferModal"));
+    bankModal.hide();
+  }
+});
+
+document.getElementById("saveCreditCard").addEventListener("click", function () {
+  const form = document.getElementById("creditCardForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Tarjeta de Crédito.");
+  } else {
+    alert("Información de tarjeta guardada correctamente.");
+    const creditModal = bootstrap.Modal.getInstance(document.getElementById("creditCardModal"));
+    creditModal.hide();
+  }
+});
