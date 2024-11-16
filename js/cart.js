@@ -163,88 +163,69 @@ option.addEventListener('change', updateCosts);
 });
 
 
+// Función para validar y finalizar compra
 function finalizarCompra() {
-const departamento = document.getElementById("departamento").value;
-const localidad = document.getElementById("localidad").value;
-const calle = document.getElementById("calle").value;
-const numero = document.getElementById("numero").value;
-const esquina = document.getElementById("esquina").value;
-const paymentMethod = document.querySelector('input[name="payment"]:checked');
+    const departamento = document.getElementById("departamento");
+    const localidad = document.getElementById("localidad");
+    const calle = document.getElementById("calle");
+    const numero = document.getElementById("numero");
+    const esquina = document.getElementById("esquina");
+    const paymentMethod = document.querySelector('input[name="payment"]:checked');
 
+    let valid = true;
 
-[departamento, localidad, calle, numero, esquina].forEach(input => {
-  input.classList.remove('is-invalid');
-  document.getElementById(`${input.id}-feedback`).innerHTML = '';
-});
+    // Validar que los campos obligatorios no estén vacíos
+    if (departamento.value.trim() === "") {
+        departamento.classList.add('is-invalid');
+        valid = false;
+    } else {
+        departamento.classList.remove('is-invalid');
+    }
 
-let valid = true;
+    if (localidad.value.trim() === "") {
+        localidad.classList.add('is-invalid');
+        valid = false;
+    } else {
+        localidad.classList.remove('is-invalid');
+    }
 
+    if (calle.value.trim() === "") {
+        calle.classList.add('is-invalid');
+        valid = false;
+    } else {
+        calle.classList.remove('is-invalid');
+    }
 
-if (departamento.value.trim() === "") {
-  departamento.classList.add('is-invalid');
-  document.getElementById('departamento-feedback').innerHTML = 'El departamento es obligatorio.';
-  valid = false;
+    if (numero.value.trim() === "") {
+        numero.classList.add('is-invalid');
+        valid = false;
+    } else {
+        numero.classList.remove('is-invalid');
+    }
+
+    if (esquina.value.trim() === "") {
+        esquina.classList.add('is-invalid');
+        valid = false;
+    } else {
+        esquina.classList.remove('is-invalid');
+    }
+
+    if (!document.querySelector('input[name="shipping"]:checked')) {
+        alert("Selecciona un tipo de envío.");
+        valid = false;
+    }
+
+    if (!paymentMethod) {
+        alert("Selecciona una forma de pago.");
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    alert("¡Compra realizada con éxito!");
 }
 
-
-if (localidad.value.trim() === "") {
-  localidad.classList.add('is-invalid');
-  document.getElementById('localidad-feedback').innerHTML = 'La localidad es obligatoria.';
-  valid = false;
-}
-
-if (calle.value.trim() === "") {
-  calle.classList.add('is-invalid');
-  document.getElementById('calle-feedback').innerHTML = 'La calle es obligatoria.';
-  valid = false;
-}
-
-if (numero.value.trim() === "") {
-  numero.classList.add('is-invalid');
-  document.getElementById('numero-feedback').innerHTML = 'El número es obligatorio.';
-  valid = false;
-}
-
-if (esquina.value.trim() === "") {
-  esquina.classList.add('is-invalid');
-  document.getElementById('esquina-feedback').innerHTML = 'La esquina es obligatoria.';
-  valid = false;
-}
-
-
-if (!valid) return;
-
-var formCart = {
-  departamento: departamento.value,
-  localidad: localidad.value,
-  calle: calle.value,
-  numero: numero.value,
-  esquina: esquina.value,
-};
-
-// Guardar el formulario en el almacenamiento local
-localStorage.setItem("formCart", JSON.stringify(formCart));
-
-if (!departamento || !localidad || !calle || !numero || !esquina) {
-  alert("Por favor, completa todos los campos de la dirección.");
-  return;
-}
-
-if (!document.querySelector('input[name="shipping"]:checked')) {
-  alert("Selecciona un tipo de envío.");
-  return;
-}
-
-if (!paymentMethod) {
-  alert("Selecciona una forma de pago.");
-  return;
-}
-
-alert("¡Compra realizada con éxito!");
-}
-
-
-document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra)
+document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
 document.addEventListener("DOMContentLoaded", updateCosts);
 document.addEventListener('DOMContentLoaded', function () {
   
