@@ -170,7 +170,9 @@ function finalizarCompra() {
     const calle = document.getElementById("calle");
     const numero = document.getElementById("numero");
     const esquina = document.getElementById("esquina");
-    const paymentMethod = document.querySelector('input[name="payment"]:checked');
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    const shippingOption = document.querySelector('input[name="shipping"]:checked');
+
 
     let valid = true;
 
@@ -210,6 +212,11 @@ function finalizarCompra() {
         esquina.classList.remove('is-invalid');
     }
 
+    if (!shippingOption) {
+        alert("Por favor, complete todos los campos de la dirección.");
+        valid = false;
+    }
+
     if (!document.querySelector('input[name="shipping"]:checked')) {
         alert("Selecciona un tipo de envío.");
         valid = false;
@@ -220,18 +227,43 @@ function finalizarCompra() {
         valid = false;
     }
 
+
     if (!valid) return;
 
     alert("¡Compra realizada con éxito!");
 }
 
 document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
-
+document.addEventListener("DOMContentLoaded", updateCosts);
 document.addEventListener('DOMContentLoaded', function () {
-    const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
+  
+  const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
 
-    botonAvanzar.addEventListener('click', function () {
-        const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
-        shippingTab.show();
-    });
+  botonAvanzar.addEventListener('click', function () {
+    const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
+    shippingTab.show();
+  });
 });
+
+document.getElementById("saveBankTransfer").addEventListener("click", function () {
+  const form = document.getElementById("bankTransferForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Transferencia Bancaria.");
+  } else {
+    alert("Información de transferencia guardada correctamente.");
+    const bankModal = bootstrap.Modal.getInstance(document.getElementById("bankTransferModal"));
+    bankModal.hide();
+  }
+});
+
+document.getElementById("saveCreditCard").addEventListener("click", function () {
+  const form = document.getElementById("creditCardForm");
+  if (!form.checkValidity()) {
+    alert("Por favor, completa todos los campos de la Tarjeta de Crédito.");
+  } else {
+    alert("Información de tarjeta guardada correctamente.");
+    const creditModal = bootstrap.Modal.getInstance(document.getElementById("creditCardModal"));
+    creditModal.hide();
+  }
+});
+
