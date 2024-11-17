@@ -170,7 +170,9 @@ function finalizarCompra() {
     const calle = document.getElementById("calle");
     const numero = document.getElementById("numero");
     const esquina = document.getElementById("esquina");
-    const paymentMethod = document.querySelector('input[name="payment"]:checked');
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    const shippingOption = document.querySelector('input[name="shipping"]:checked');
+
 
     let valid = true;
 
@@ -210,8 +212,18 @@ function finalizarCompra() {
         esquina.classList.remove('is-invalid');
     }
 
+    if (!shippingOption) {
+        alert("Por favor, complete todos los campos de la dirección.");
+        valid = false;
+    }
+
     if (!document.querySelector('input[name="shipping"]:checked')) {
         alert("Selecciona un tipo de envío.");
+        valid = false;
+    }
+
+    if (!paymentMethod) {
+        alert("Selecciona una forma de pago.");
         valid = false;
     }
 
