@@ -91,58 +91,67 @@
           <div class="container py-4">
             <h3>Dirección de Envío</h3>
             <form id="shipping-address">
-              
-              <div class="col-sm-6">Departamento:
-                
-                <select id="departamento" name="departamento" required>
-                    <option value="">Por favor, selecciona un departamento</option>
-                    <option value="Artigas">Artigas</option>
-                    <option value="Canelones">Canelones</option>
-                    <option value="Cerro Largo">Cerro Largo</option>
-                    <option value="Colonia">Colonia</option>
-                    <option value="Durazno">Durazno</option>
-                    <option value="Flores">Flores</option>
-                    <option value="Florida">Florida</option>
-                    <option value="Lavalleja">Lavalleja</option>
-                    <option value="Maldonado">Maldonado</option>
-                    <option value="Montevideo">Montevideo</option>
-                    <option value="Paysandú">Paysandú</option>
-                    <option value="Río Negro">Río Negro</option>
-                    <option value="Rivera">Rivera</option>
-                    <option value="Rocha">Rocha</option>
-                    <option value="Salto">Salto</option>
-                    <option value="San José">San José</option>
-                    <option value="Soriano">Soriano</option>
-                    <option value="Tacuarembó">Tacuarembó</option>
-                    <option value="Treinta y Tres">Treinta y Tres</option>
-                </select>
-              </div>
+          
+              <div class="row mb-3 text-start">
+                <label for="departamento" class="col-sm-2 col-form-label">Departamento:</label>
+                <div class="col-sm-4">
+                    <select id="departamento" name="departamento" class="form-select" required>
+                        <option value="">Por favor, selecciona un departamento</option>
+                        <option value="Artigas">Artigas</option>
+                        <option value="Canelones">Canelones</option>
+                        <option value="Cerro Largo">Cerro Largo</option>
+                        <option value="Colonia">Colonia</option>
+                        <option value="Durazno">Durazno</option>
+                        <option value="Flores">Flores</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Lavalleja">Lavalleja</option>
+                        <option value="Maldonado">Maldonado</option>
+                        <option value="Montevideo">Montevideo</option>
+                        <option value="Paysandú">Paysandú</option>
+                        <option value="Río Negro">Río Negro</option>
+                        <option value="Rivera">Rivera</option>
+                        <option value="Rocha">Rocha</option>
+                        <option value="Salto">Salto</option>
+                        <option value="San José">San José</option>
+                        <option value="Soriano">Soriano</option>
+                        <option value="Tacuarembó">Tacuarembó</option>
+                        <option value="Treinta y Tres">Treinta y Tres</option>
+                    </select>
+                    <div class="invalid-feedback">El departamento es obligatorio.</div>
+                </div>
+            </div>
+            
+            
               <div class="row mb-3 text-start">
                 <label for="localidad" class="col-sm-2 col-form-label">Localidad:</label>
                 <div class="col-sm-4 text-start">
                     <input type="text" class="form-control" id="localidad" required />
-                    <div class="invalid-feedback" id="name-feedback"></div>
+                    <div class="invalid-feedback">La localidad es obligatoria.</div>
+    
                 </div>
             </div>
               <div class="row mb-3 text-start">
                 <label for="calle" class="col-sm-2 col-form-label">Calle:</label>
                 <div class="col-sm-4 text-start">
                     <input type="text" class="form-control" id="calle" required />
-                    <div class="invalid-feedback" id="name-feedback"></div>
+                    <div class="invalid-feedback">La calle es obligatoria.</div>
+    
                 </div>
               </div>
               <div class="row mb-3 text-start">
                 <label for="numero" class="col-sm-2 col-form-label">Número:</label>
                 <div class="col-sm-4 text-start">
                     <input type="text" class="form-control" id="numero" required />
-                    <div class="invalid-feedback" id="name-feedback"></div>
+                    <div class="invalid-feedback">La calle es obligatoria.</div>
+    
                 </div>
               </div>
               <div class="row mb-3 text-start">
                 <label for="esquina" class="col-sm-2 col-form-label">Esquina:</label>
                 <div class="col-sm-4 text-start">
                     <input type="text" class="form-control" id="esquina" required />
-                    <div class="invalid-feedback" id="name-feedback"></div>
+                    <div class="invalid-feedback">La esquina es obligatoria.</div>
+    
                 </div>
               </div>
             </form>
@@ -304,3 +313,4 @@
       <script src="js/cart.js"></script>
       <script src="js/product-info.js"></script>
     </body>
+
