@@ -266,4 +266,3 @@ document.getElementById("saveCreditCard").addEventListener("click", function () 
     creditModal.hide();
   }
 });
-
