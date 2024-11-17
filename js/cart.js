@@ -215,6 +215,10 @@ function finalizarCompra() {
         valid = false;
     }
 
+    if (!paymentMethod) {
+        alert("Selecciona una forma de pago.");
+        valid = false;
+    }
 
     if (!valid) return;
 
@@ -222,35 +226,12 @@ function finalizarCompra() {
 }
 
 document.getElementById("finalizar-compra").addEventListener("click", finalizarCompra);
-document.addEventListener("DOMContentLoaded", updateCosts);
+
 document.addEventListener('DOMContentLoaded', function () {
-  
-  const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
+    const botonAvanzar = document.querySelector('#cart button[data-bs-target="#shipping"]');
 
-  botonAvanzar.addEventListener('click', function () {
-    const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
-    shippingTab.show();
-  });
-});
-
-document.getElementById("saveBankTransfer").addEventListener("click", function () {
-  const form = document.getElementById("bankTransferForm");
-  if (!form.checkValidity()) {
-    alert("Por favor, completa todos los campos de la Transferencia Bancaria.");
-  } else {
-    alert("Información de transferencia guardada correctamente.");
-    const bankModal = bootstrap.Modal.getInstance(document.getElementById("bankTransferModal"));
-    bankModal.hide();
-  }
-});
-
-document.getElementById("saveCreditCard").addEventListener("click", function () {
-  const form = document.getElementById("creditCardForm");
-  if (!form.checkValidity()) {
-    alert("Por favor, completa todos los campos de la Tarjeta de Crédito.");
-  } else {
-    alert("Información de tarjeta guardada correctamente.");
-    const creditModal = bootstrap.Modal.getInstance(document.getElementById("creditCardModal"));
-    creditModal.hide();
-  }
+    botonAvanzar.addEventListener('click', function () {
+        const shippingTab = new bootstrap.Tab(document.querySelector('#shipping-tab'));
+        shippingTab.show();
+    });
 });
