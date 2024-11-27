@@ -66,7 +66,7 @@ fetch(API_URL)
 
         // Para cada archivo, realizar una solicitud para obtener su contenido
         fileNames.forEach(fileName => {
-            fetch(${API_URL}/${fileName.replace('.json', '')})
+            fetch(`${API_URL}/${fileName.replace('.json', '')}`)
                 .then(response => response.json())
                 .then(data => console.log(Contenido de ${fileName}:, data));
         });
