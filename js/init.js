@@ -68,7 +68,7 @@ fetch(API_URL)
         fileNames.forEach(fileName => {
             fetch(`${API_URL}/${fileName.replace('.json', '')}`)
                 .then(response => response.json())
-                .then(data => console.log(Contenido de ${fileName}:, data));
+                .then(data => console.log(`Contenido de ${fileName}:`, data));
         });
     })
 
