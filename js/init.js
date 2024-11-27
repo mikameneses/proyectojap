@@ -59,10 +59,17 @@ document.getElementById("logoutLink").addEventListener("click", function (event)
   // Redirigir al usuario a la página de inicio o a la página de inicio de sesión
   window.location.href = "index.html"; // Cambia esto si quieres redirigir a otra página
 });
+fetch(API_URL)
+    .then(response => response.json())
+    .then(fileNames => {
+        console.log('Archivos disponibles:', fileNames);
 
- fetch(`${API_URL}/nombre_del_json`)
-       .then(response => response.json())
-       .then(data => console.log(data));
-
+        // Para cada archivo, realizar una solicitud para obtener su contenido
+        fileNames.forEach(fileName => {
+            fetch(${API_URL}/${fileName.replace('.json', '')})
+                .then(response => response.json())
+                .then(data => console.log(Contenido de ${fileName}:, data));
+        });
+    })
 
 
