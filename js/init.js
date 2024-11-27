@@ -6,6 +6,8 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+const API_URL = 'http://localhost:3000/data';
+
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -57,3 +59,10 @@ document.getElementById("logoutLink").addEventListener("click", function (event)
   // Redirigir al usuario a la página de inicio o a la página de inicio de sesión
   window.location.href = "index.html"; // Cambia esto si quieres redirigir a otra página
 });
+
+ fetch(`${API_URL}/nombre_del_json`)
+       .then(response => response.json())
+       .then(data => console.log(data));
+
+
+
