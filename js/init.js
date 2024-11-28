@@ -64,7 +64,6 @@ fetch(API_URL)
     .then(fileNames => {
         console.log('Archivos disponibles:', fileNames);
 
-        // Para cada archivo, realizar una solicitud para obtener su contenido
         fileNames.forEach(fileName => {
             fetch(`${API_URL}/${fileName.replace('.json', '')}`)
                 .then(response => response.json())
