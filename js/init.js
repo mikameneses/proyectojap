@@ -54,6 +54,6 @@ document.getElementById("logoutLink").addEventListener("click", function (event)
 
   alert("Has cerrado sesión exitosamente.");
 
-  // Redirigir al usuario a la página de inicio o a la página de inicio de sesión
-  window.location.href = "index.html"; // Cambia esto si quieres redirigir a otra página
+  
+  window.location.href = "index.html"; 
 });
