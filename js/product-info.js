@@ -9,8 +9,8 @@ function renderStars(score) {
 document.addEventListener('DOMContentLoaded', () => {
     const productId = localStorage.getItem('id');
     if (productId) {
-        const apiUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-        const commentsApiUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+        const apiUrl = 'http://localhost:3000/products/' + productId;
+        const commentsApiUrl = 'http://localhost:3000/products_comments/' + productId;
 
         fetch(apiUrl)
             .then(response => response.json())
