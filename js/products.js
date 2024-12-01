@@ -9,7 +9,7 @@ window.onload = function() {
 
     // Comprueba que tienes un catID válido
     if (categoriaId) {
-        const url =  'http://localhost:3000/cats_products/${categoriaId}.json'⁠;
+        const url =  'http://localhost:3000/cats_products/${categoriaId}'⁠;
 
 
     let products = []; // Variable global para almacenar los productos
