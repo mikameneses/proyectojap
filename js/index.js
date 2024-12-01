@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     };
 
+
+
+
     // Muestra el nombre de usuario si está almacenado
     var username = localStorage.getItem("username");
     if (username) {
