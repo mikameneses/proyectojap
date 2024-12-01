@@ -9,8 +9,7 @@ window.onload = function() {
 
     // Comprueba que tienes un catID válido
     if (categoriaId) {
-        import { PRODUCTS_URL } from './init.js';
-        const url =  '${PRODUCTS_URL}${categoriaId}.json'⁠;
+        const url =  'http://localhost:3000/cats_products/${categoriaId}.json'⁠;
 
 
     let products = []; // Variable global para almacenar los productos
