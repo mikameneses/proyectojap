@@ -9,8 +9,8 @@ window.onload = function() {
 
     // Comprueba que tienes un catID válido
     if (categoriaId) {
-        // Construye la URL usando comillas invertidas para la interpolación
-        const url = `https://japceibal.github.io/emercado-api/cats_products/${categoriaId}.json`;
+        import { PRODUCTS_URL } from './init.js';
+        const url =  '${PRODUCTS_URL}${categoriaId}.json'⁠;
 
 
     let products = []; // Variable global para almacenar los productos
@@ -117,4 +117,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
 });
