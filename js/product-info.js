@@ -10,9 +10,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const productId = localStorage.getItem('id');
     if (productId) {
         const apiUrl = 'http://localhost:3000/products/' + productId;
-        const commentsApiUrl = 'http://localhost:3000/products_comments/' + productId;
+       
 
-        fetch(apiUrl)
+        const commentsApiUrl = 'http://localhost:3000/products/' + productId + '/comments';
+
+        const token = localStorage.getItem('token');
+
+        // Configura los headers para la petición.
+        let headers = {
+            'Content-Type': 'application/json'
+        };
+
+        // Si se proporciona un token, lo agrega a los headers.
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
+        fetch(apiUrl, {
+                method: 'GET',
+                headers: headers
+            })
             .then(response => response.json())
             .then(data => {
                 document.getElementById('product-name').textContent = data.name;
@@ -41,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error al obtener los datos del producto:', error));
 
-        fetch(commentsApiUrl)
+        fetch(commentsApiUrl, {
+            method: 'GET',
+            headers: headers
+          })
             .then(response => response.json())
             .then(comentarios => {
                 const commentsContainer = document.getElementById('comments-container');
