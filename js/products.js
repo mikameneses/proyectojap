@@ -11,15 +11,12 @@ window.onload = function() {
     if (categoriaId) {
     const url = 'http://localhost:3000/cats_products/' + categoriaId;
 
-
     let products = []; // Variable global para almacenar los productos
 
-    //let token = ''
-
-
-
+    const token = localStorage.getItem('token');
+    
     // Llamada a la función para obtener los datos del JSON
-    getJSONData(url).then(data => {
+    getJSONData(url, token).then(data => {
         if (data.status === 'ok') {
             products = data.data.products;
             renderProducts(products);
